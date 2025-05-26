@@ -3,6 +3,7 @@ using OnimeBestofrieeeendo.Components;
 namespace OnimeBestofrieeeendo;
 
 public class Program
+
 {
     public static void Main(string[] args)
     {
