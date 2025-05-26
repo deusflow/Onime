@@ -3,3 +3,33 @@ obj/
 /packages/
 riderModule.iml
 /_ReSharper.Caches/
+
+# Общие .NET вещи
+bin/
+obj/
+.vs/
+*.user
+*.suo
+
+# Secrets
+.env
+secrets.json
+*.key
+*.pfx
+launchSettings.json
+appsettings.Development.json
+
+
+
+# VS Code
+.vscode/
+
+# JetBrains Rider
+.idea/
+
+# Logs
+*.log
+
+# OS-specific
+.DS_Store
+Thumbs.db
