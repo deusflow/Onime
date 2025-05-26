@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Npgsql" Version="8.0.7" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="wwwroot\app.css" />
+      <None Include="wwwroot\css\nav-menu.css" />
+      <None Include="wwwroot\images\background.svg" />
+      <None Include="wwwroot\images\bestofrendo.jpg" />
+      <None Include="wwwroot\images\button.svg" />
+      <None Include="wwwroot\images\buttonisactive.gif" />
+      <None Include="wwwroot\images\default-avatar.jpg" />
+      <None Include="wwwroot\images\default-avatar.svg" />
+      <None Include="wwwroot\images\profil.svg" />
+      <None Include="wwwroot\js\site.js" />
+    </ItemGroup>
+
+</Project>

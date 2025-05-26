@@ -1,0 +1,336 @@
+@page "/" 
+@using Microsoft.JSInterop 
+@using Onime.Models 
+@inject IJSRuntime JSRuntime 
+@rendermode InteractiveServer 
+@using Npgsql
+@inject IConfiguration Configuration
+
+<!-- Главная секция -->
+<section id="home" class="section">
+    <div class="container">
+        <div class="hero-content">
+            <h1>The Onime World</h1> <!-- просто заголовок -->
+            <p class="lead"></p> <!-- пока без текста -->
+            <button class="btn btn-primary" @onclick="@(() => ScrollToSection("products"))">Посмотреть товары</button> <!-- кнопка скроллит вниз -->
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+<!-- Секция товаров -->
+<section id="products" class="section">
+    <div class="container-full">
+        <div class="products-grid">
+            @foreach (var product in products) // пробегаюсь по всем товарам
+            {
+                <div class="product-card"> <!-- карточка товара -->
+                    <div class="product-image">
+                        <img src="@product.ImageUrl" alt="@product.Name" /> <!-- картинка -->
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">@product.Name</h3> <!-- название -->
+                        <span class="product-price">@product.Price DKK</span> <!-- цена -->
+                        <div class="product-actions">
+                            <button class="btn-add-cart">Add to Cart</button> <!-- потом добавим логику -->
+                            <button class="btn-read-more">Read More</button> <!-- пока не работает -->
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+<!-- Секция категорий -->
+<section id="categories" class="section">
+    <div class="container">
+        <h2>blabla</h2> <!-- пока заглушка -->
+        <div class="categories-grid">
+            <div class="category-card">
+                <h3>new</h3>
+                <p>New Arrivals</p>
+            </div>
+            <div class="category-card">
+                <h3>Popular</h3>
+                <p>Your Choice</p>
+            </div>
+            <div class="category-card">
+                <h3>Sale</h3>
+                <p>Sale 50%</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+<!-- Секция профиля пользователя -->
+<section id="profile" class="section profile-section">
+    <div class="container">
+        <h2>My Profile</h2> <!-- заголовок -->
+
+        @if (currentUserProfile != null)
+        {
+            <div class="profile-container">
+                <div class="profile-avatar">
+                    
+                    @{
+                        // Проверяем, начинается ли путь с / (корневой путь)
+                        var avatarSrc = !string.IsNullOrEmpty(currentUserProfile.AvatarUrl) 
+                            ? (currentUserProfile.AvatarUrl.StartsWith("/") 
+                                ? currentUserProfile.AvatarUrl 
+                                : "/" + currentUserProfile.AvatarUrl)
+                            : "/images/default-avatar.jpg";
+                            
+                        // Проверяем существование файла
+                        var fullPath = System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot", 
+                            avatarSrc.TrimStart('/'));
+                        var fileExists = System.IO.File.Exists(fullPath);
+                        
+                        // Если файл не существует, используем дефолтный аватар
+                        if (!fileExists) {
+                            avatarSrc = "/images/default-avatar.jpg";
+                        }
+                    } 
+                    
+                    <img src="@avatarSrc" alt="@currentUserProfile.Username" />
+
+                    <div class="profile-level">
+                        <span>LVL @currentUserProfile.Level</span>
+                    </div>
+                </div>
+                <div class="profile-info">
+                    <div class="profile-username">
+                        <h3>@currentUserProfile.Username</h3>
+                        <span class="profile-status">Online</span>
+                    </div>
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Rank:</span>
+                            <span class="stat-value">@currentUserProfile.Role</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Joined:</span>
+                            <span class="stat-value">@currentUserProfile.JoinDate.ToShortDateString()</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Balance:</span>
+                            <span class="stat-value">@currentUserProfile.Balance DKK</span>
+                        </div>
+                    </div>
+                    <div class="profile-bio">
+                        <p>@currentUserProfile.Bio</p>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <p>Profile not found.</p>
+        }
+
+        <!-- Остальной код с инвентарем и достижениями если нужно -->
+        
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+<!-- Секция о нас -->
+<section id="about" class="section">
+    <div class="container">
+        <h2>About Us</h2>
+        <div class="about-content">
+            <p>Onime - the best are with us</p>
+            <p>We offer only high-quality products from trusted manufacturers.</p>
+        </div>
+    </div>
+</section>
+
+@code {
+    private async Task ScrollToSection(string sectionId)
+    {
+        await JSRuntime.InvokeVoidAsync("scrollToSection", sectionId); // вызываю функцию из js
+    }
+
+    // демо товары (пока просто список)
+    private List<Product> products = new()
+    {
+        new() { Name = "Demo Product 1", Price = 500, ImageUrl = "/images/bestofrendo.jpg", Category = "Figures", Description = "Cool anime figure" },
+        new() { Name = "Demo Product 2", Price = 300, ImageUrl = "/images/bestofrendo.jpg", Category = "Posters", Description = "Limited edition poster" },
+        new() { Name = "Demo Product 3", Price = 1200, ImageUrl = "/images/bestofrendo.jpg", Category = "Figures", Description = "Collector's item" },
+        new() { Name = "Demo Product 4", Price = 150, ImageUrl = "/images/bestofrendo.jpg", Category = "Accessories", Description = "Anime keychain" },
+        new() { Name = "Demo Product 5", Price = 80, ImageUrl = "/images/bestofrendo.jpg", Category = "Stickers", Description = "Cool sticker set" },
+    };
+
+    // подключим БД, вместо этого блока будет загрузка данных из нее
+    // пример ниже на будущее:
+    /*
+    private List<Product> products = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        products = await LoadProductsFromDatabaseAsync();
+    }
+
+    private async Task<List<Product>> LoadProductsFromDatabaseAsync()
+    {
+        var result = new List<Product>();
+
+        using var conn = new Npgsql.NpgsqlConnection("строка_подключения");
+        await conn.OpenAsync();
+
+        using var cmd = new Npgsql.NpgsqlCommand("SELECT Id, Name, Description, Price, ImageUrl, Category FROM Products", conn);
+        using var reader = await cmd.ExecuteReaderAsync();
+
+        while (await reader.ReadAsync())
+        {
+            result.Add(new Product
+            {
+                Id = reader.GetString(0),
+                Name = reader.GetString(1),
+                Description = reader.GetString(2),
+                Price = reader.GetDecimal(3),
+                ImageUrl = reader.GetString(4),
+                Category = reader.GetString(5)
+            });
+        }
+
+        return result;
+    }
+    */
+    
+    
+    
+    // Профили из базы
+    private List<UserProfile> profiles = new();
+    private int CurrentUserId = 1; // Текущий пользователь — первый из списка
+
+    private UserProfile? currentUserProfile;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            profiles = await LoadProfilesAsync();
+            currentUserProfile = profiles.FirstOrDefault(p => p.Id == CurrentUserId);
+            
+            // Если профиль не загрузился, создаем временный демо-профиль
+            if (currentUserProfile == null)
+            {
+                currentUserProfile = new UserProfile
+                {
+                    Id = 1,
+                    Username = "Demo User",
+                    Email = "demo@example.com",
+                    JoinDate = DateTime.Now.AddDays(-100),
+                    Balance = 1000,
+                    Role = "Demo",
+                    AvatarUrl = "/images/default-avatar.jpg",
+                    Level = 10,
+                    Bio = "This is a demo profile because database connection failed"
+                };
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error in OnInitializedAsync: {ex.Message}");
+            // Создаем временный демо-профиль при ошибке
+            currentUserProfile = new UserProfile
+            {
+                Id = 1,
+                Username = "Error Demo User",
+                Email = "error@example.com",
+                JoinDate = DateTime.Now,
+                Balance = 999,
+                Role = "Error",
+                AvatarUrl = "/images/default-avatar.jpg",
+                Level = 1,
+                Bio = $"Error loading profile: {ex.Message}"
+            };
+        }
+    }
+    
+    
+  
+    
+    
+    private async Task<List<UserProfile>> LoadProfilesAsync()
+    {
+        var list = new List<UserProfile>();
+        var connString = Configuration.GetConnectionString("DefaultConnection");
+
+        try
+        {
+            using var conn = new NpgsqlConnection(connString);
+            await conn.OpenAsync();
+
+            string sql = @"
+                SELECT u.id, u.username, u.email, u.join_date, u.balance, u.role,
+                       p.avatar_url, p.level, p.bio
+                FROM users u
+                JOIN profiles p ON u.id = p.user_id
+            ";
+
+            using var cmd = new NpgsqlCommand(sql, conn);
+            using var reader = await cmd.ExecuteReaderAsync();
+
+            while (await reader.ReadAsync())
+            {
+                list.Add(new UserProfile
+                {
+                    Id = reader.GetInt32(0),
+                    Username = reader.GetString(1),
+                    Email = reader.GetString(2),
+                    JoinDate = reader.GetDateTime(3),
+                    Balance = reader.GetInt32(4),
+                    Role = reader.GetString(5),
+                    AvatarUrl = reader.IsDBNull(6) ? null : reader.GetString(6),
+                    Level = reader.GetInt32(7),
+                    Bio = reader.IsDBNull(8) ? null : reader.GetString(8)
+                });
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading profiles: {ex.Message}");
+        }
+
+        return list;
+    }
+
+    public class UserProfile
+    {
+        public int Id { get; set; }
+        public string Username { get; set; } = "";
+        public string Email { get; set; } = "";
+        public DateTime JoinDate { get; set; }
+        public int Balance { get; set; }
+        public string Role { get; set; } = "";
+        public string? AvatarUrl { get; set; }
+        public int Level { get; set; }
+        public string? Bio { get; set; }
+    }
+}
