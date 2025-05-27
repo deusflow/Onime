@@ -126,19 +126,19 @@
     .nav-button-standard {
         padding: 12px 30px;
         font-size: 14px;
-        
+
     }
-    
+
     .nav-button-profile {
         width: 100px;
         height: 100px;
     }
-    
+
     .profile-avatar-img {
         width: 80px;
         height: 80px;
     }
-    
+
     .nav-button-home { left: 150px; }
     .nav-button-shop { left: 270px; }
     .nav-button-zone { left: 390px; }
@@ -151,17 +151,17 @@
         padding: 10px 25px;
         font-size: 12px;
     }
-    
+
     .nav-button-profile {
         width: 80px;
         height: 80px;
     }
-    
+
     .profile-avatar-img {
         width: 65px;
         height: 65px;
     }
-    
+
     .nav-button-home { left: 120px; }
     .nav-button-shop { left: 220px; }
     .nav-button-zone { left: 320px; }
@@ -174,12 +174,12 @@
         padding: 8px 20px;
         font-size: 11px;
     }
-    
+
     .nav-button-profile {
         width: 60px;
         height: 60px;
     }
-    
+
     .profile-avatar-img {
         width: 50px;
         height: 50px;

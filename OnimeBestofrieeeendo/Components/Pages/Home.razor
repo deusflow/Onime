@@ -23,26 +23,29 @@
 <!-- Секция товаров -->
 <section id="products" class="section">
     <div class="container-full">
-        <div class="products-grid">
-            @foreach (var product in shopProducts) // пробегаюсь по всем товарам
-            {
-                <div class="product-card"> <!-- карточка товара -->
-                    <div class="product-image">
-                        <img src="@product.ImageUrl" alt="@product.Name" /> <!-- картинка -->
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">@product.Name</h3> <!-- название -->
-                        <span class="product-price">@product.Price DKK</span> <!-- цена -->
-                        <div class="product-actions">
-                            <button class="btn-add-cart">Add to Cart</button> <!-- потом добавим логику -->
-                            <button class="btn-read-more" @onclick="() => ShowProductDetails(product)">Read More</button> 
+        <div class="products-wrapper"> <!-- добавлено -->
+            <div class="products-grid">
+                @foreach (var product in shopProducts)
+                {
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="@product.ImageUrl" alt="@product.Name" />
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">@product.Name</h3>
+                            <span class="product-price">@product.Price DKK</span>
+                            <div class="product-actions">
+                                <button class="btn-add-cart">Add to Cart</button>
+                                <button class="btn-read-more" @onclick="() => ShowProductDetails(product)">Read More</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            }
+                }
+            </div>
         </div>
     </div>
 </section>
+
 
 @if (selectedProduct != null)
 {
@@ -180,7 +183,7 @@
         await JSRuntime.InvokeVoidAsync("scrollToSection", sectionId); // вызываю функцию из js
     }
 
-    // демо товары (пока просто список)
+    // демо товары из бд
     private List<ShopProductView> shopProducts = new();
     
     private List<UserProfile> profiles = new();
@@ -267,7 +270,7 @@
                     Name = reader.GetString(2),
                     ImageUrl = reader.GetString(3),
                     Description = reader.GetString(4),
-                    Price = reader.GetInt32(5),
+                    Price = reader.GetDecimal(5),
                     Quantity = reader.GetInt32(6)
                 });
             }

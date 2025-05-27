@@ -10,9 +10,9 @@
   <component name="ChangeListManager">
     <list default="true" id="0f047eb9-94c7-4c61-8d46-eb3157542f4b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OnimeBestofrieeeendo.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnimeBestofrieeeendo.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Components/App.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Components/App.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Components/Pages/Home.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Components/Pages/Home.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Product.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ShopProductView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/ShopProductView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wwwroot/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wwwroot/css/nav-menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/nav-menu.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -119,7 +119,7 @@
       <option name="presentableId" value="Default" />
       <updated>1748126905015</updated>
       <workItem from="1748126906903" duration="16000" />
-      <workItem from="1748301282531" duration="10689000" />
+      <workItem from="1748301282531" duration="18312000" />
     </task>
     <task id="LOCAL-00001" summary="New vers">
       <option name="closed" value="true" />
@@ -177,7 +177,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748333621115</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="combined the shop databases, added a column with a description to the database, added all this to the read more button, and added a pop-up window with a minimalist style to the same button">
+      <option name="closed" value="true" />
+      <created>1748339463242</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1748339463242</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -204,7 +212,8 @@
     <MESSAGE value="just added some appsettings example" />
     <MESSAGE value="gitignor new" />
     <MESSAGE value="worked with products section" />
-    <option name="LAST_COMMIT_MESSAGE" value="worked with products section" />
+    <MESSAGE value="combined the shop databases, added a column with a description to the database, added all this to the read more button, and added a pop-up window with a minimalist style to the same button" />
+    <option name="LAST_COMMIT_MESSAGE" value="combined the shop databases, added a column with a description to the database, added all this to the read more button, and added a pop-up window with a minimalist style to the same button" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
