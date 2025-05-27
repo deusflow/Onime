@@ -9,10 +9,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f047eb9-94c7-4c61-8d46-eb3157542f4b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Models/ShopProductView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OnimeBestofrieeeendo.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnimeBestofrieeeendo.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Components/Pages/Home.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Components/Pages/Home.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Product.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/ShopProductView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/ShopProductView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wwwroot/css/nav-menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/nav-menu.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +46,9 @@
     "accountId": "264680fe-6bc7-4de9-8e35-f05b8f99aed6"
   }
 }]]></component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Users/deuswork/Documents/Programmering/Otaku/OnimeBestofrieeeendo/OnimeBestofrieeeendo/appsettings.json" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 7
@@ -115,7 +119,7 @@
       <option name="presentableId" value="Default" />
       <updated>1748126905015</updated>
       <workItem from="1748126906903" duration="16000" />
-      <workItem from="1748301282531" duration="6660000" />
+      <workItem from="1748301282531" duration="10689000" />
     </task>
     <task id="LOCAL-00001" summary="New vers">
       <option name="closed" value="true" />
@@ -165,7 +169,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748302343310</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="worked with products section">
+      <option name="closed" value="true" />
+      <created>1748333621115</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1748333621115</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,7 +203,8 @@
     <MESSAGE value="vers" />
     <MESSAGE value="just added some appsettings example" />
     <MESSAGE value="gitignor new" />
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="worked with products section" />
+    <option name="LAST_COMMIT_MESSAGE" value="worked with products section" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
