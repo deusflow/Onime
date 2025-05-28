@@ -1,6 +1,6 @@
 @page "/"
 @using Npgsql
-@inject IJSRuntime JSRuntime
+@inject IJSRuntime JsRuntime
 @inject IConfiguration Configuration
 @rendermode InteractiveServer
 
@@ -162,7 +162,7 @@
     private async Task ScrollToSection(string sectionId)
     {
         // Делаем плавный скролл через JavaScript, потому что Blazor сам не умеет
-        await JSRuntime.InvokeVoidAsync("scrollToSection", sectionId);
+        await JsRuntime.InvokeVoidAsync("scrollToSection", sectionId);
     }
 
     // Грузим всё, когда страница запускается
