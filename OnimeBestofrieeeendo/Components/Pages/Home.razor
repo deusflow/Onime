@@ -34,7 +34,7 @@
                             <h3 class="product-title">@product.Name</h3>
                             <span class="product-price">@product.Price DKK</span>
                             <div class="product-actions">
-                                <button class="btn-add-cart">Købe</button>
+                                <button class="btn-add-cart" @onclick="() => BuyProduct(product)">Købe</button>
                                 <button class="btn-read-more" @onclick="() => ShowProductDetails(product)">Beskrivelse</button>
                                 <!-- Жмакаешь — и вылезает поп-ап с инфой -->
                             </div>
@@ -145,6 +145,55 @@
 </section>
 
 @code {
+    
+    private async Task BuyProduct(ShopProductView product)
+    {
+        if (_currentUserProfile == null)
+            return;
+
+        if (_currentUserProfile.Balance < product.Price)
+        {
+            await JsRuntime.InvokeVoidAsync("showFunnyPopup", "Упс! Денег не хватает 🤷‍♂️", "Попробуй продать свою душу или сходи поработай...");
+            return;
+        }
+
+        try
+        {
+            var connString = Configuration.GetConnectionString("DefaultConnection");
+
+            using var conn = new NpgsqlConnection(connString);
+            await conn.OpenAsync();
+
+            using var transaction = await conn.BeginTransactionAsync();
+
+            // Обновляем баланс
+            using var cmdUpdateUser = new NpgsqlCommand(
+                "UPDATE users SET balance = balance - @price WHERE id = @userId", conn, transaction);
+            cmdUpdateUser.Parameters.AddWithValue("@price", product.Price);
+            cmdUpdateUser.Parameters.AddWithValue("@userId", _currentUserProfile.Id);
+            await cmdUpdateUser.ExecuteNonQueryAsync();
+
+            // Уменьшаем количество товара
+            using var cmdUpdateProduct = new NpgsqlCommand(
+                "UPDATE shop_items SET quantity = quantity - 1 WHERE shop_item_id = @shopItemId", conn, transaction);
+            cmdUpdateProduct.Parameters.AddWithValue("@shopItemId", product.ShopItemId);
+            await cmdUpdateProduct.ExecuteNonQueryAsync();
+
+            await transaction.CommitAsync();
+
+            await JsRuntime.InvokeVoidAsync("showFunnyPopup", "Поздравляем 🎉", $"Ты купил: {product.Name}!");
+
+            // Обновляем UI
+            _shopProducts = await LoadProductAsync();
+            _currentUserProfile.Balance -= product.Price;
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Ошибка при покупке: " + ex.Message);
+            await JsRuntime.InvokeVoidAsync("showFunnyPopup", "Ошибка 😵", "Покупка не удалась. Попробуй ещё раз.");
+        }
+    }
     // ==================== НАШИ ШМОТКИ И ДАННЫЕ ====================
     // Список всех шмоток в магазе
     private List<ShopProductView> _shopProducts = new();
@@ -290,7 +339,7 @@
             Username = reader.GetString(1),
             Email = reader.GetString(2),
             JoinDate = reader.GetDateTime(3),
-            Balance = reader.GetInt32(4),
+            Balance = reader.GetDecimal(4),
             Role = reader.GetString(5),
             AvatarUrl = reader.IsDBNull(6) ? null : reader.GetString(6),
             Level = reader.GetInt32(7),
@@ -335,7 +384,7 @@
         public string Username { get; set; } = "";
         public string Email { get; set; } = "";
         public DateTime JoinDate { get; set; }
-        public int Balance { get; set; }
+        public decimal Balance { get; set; }
         public string Role { get; set; } = "";
         public string? AvatarUrl { get; set; }
         public int Level { get; set; }
