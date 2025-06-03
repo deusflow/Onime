@@ -9,13 +9,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f047eb9-94c7-4c61-8d46-eb3157542f4b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/wwwroot/js/popup.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OnimeBestofrieeeendo.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnimeBestofrieeeendo.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Components/App.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Components/App.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Components/Layout/NavMenu.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Components/Layout/NavMenu.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Components/Pages/Home.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Components/Pages/Home.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Components/_Imports.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Components/_Imports.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Profile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Profile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wwwroot/js/popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/js/popup.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,7 +217,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748431574194</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="New popup window when a user buys something, logic added to the purchase button.">
+      <option name="closed" value="true" />
+      <created>1748978902796</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1748978902796</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -253,7 +257,8 @@
     <MESSAGE value="Added style and design (partially) to the user's profile." />
     <MESSAGE value="Cleaned up the code a bit, not the final version." />
     <MESSAGE value="Tidied up the code, removed unnecessary parts, replaced class names with correct ones (errors were found)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tidied up the code, removed unnecessary parts, replaced class names with correct ones (errors were found)" />
+    <MESSAGE value="New popup window when a user buys something, logic added to the purchase button." />
+    <option name="LAST_COMMIT_MESSAGE" value="New popup window when a user buys something, logic added to the purchase button." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

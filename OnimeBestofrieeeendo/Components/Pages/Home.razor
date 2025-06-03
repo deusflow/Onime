@@ -46,7 +46,7 @@
     </div>
 </section>
 
-<!-- ==================== ПОП-АП ДЛЯ ШМОТКИ ==================== -->
+<!-- ==================== ПОП-АП С ИНФОИ==================== -->
 <!-- Это типа окошко, где больше инфы про шмотку -->
 @if (_selectedProduct != null)
 {
@@ -153,7 +153,7 @@
 
         if (_currentUserProfile.Balance < product.Price)
         {
-            await JsRuntime.InvokeVoidAsync("showFunnyPopup", "Упс! Денег не хватает 🤷‍♂️", "Попробуй продать свою душу или сходи поработай...");
+            await JsRuntime.InvokeVoidAsync("showFunnyPopup", "Oops! Not enough money 🤷‍♂️", "Go sell your soul or start hustling, buddy!");
             return;
         }
 
