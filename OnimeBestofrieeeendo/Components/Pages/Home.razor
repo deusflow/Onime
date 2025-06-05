@@ -8,12 +8,14 @@
 <!-- Это типа обложка сайта, приветственная  -->
 <section id="home" class="section">
     <div class="container">
+        
         <div class="hero-content">
             <h1>The Onime World</h1>
             <p class="lead"></p> <!-- Сюда можно вставить привет, типа "Хай" -->
-            <button class="btn btn-primary" @onclick="@(() => ScrollToSection("products"))">Посмотреть шмотки</button>
-            <!-- Жмакаешь — и сразу к товарам летишь -->
+            <button class="btn btn-primary" @onclick="@(() => ScrollToSection("products"))">ShopIt</button>
+            
         </div>
+        
     </div>
 </section>
 
@@ -25,9 +27,8 @@
             <div class="products-grid">
                 @foreach (var product in _shopProducts)
                 {
-                    <!-- Для каждой шмотки своя карточка, как в инсте -->
                     <div class="product-card">
-                        <div class="product-image">
+                        <div class="product-image-wrapper">
                             <img src="@product.ImageUrl" alt="@product.Name" />
                         </div>
                         <div class="product-info">
@@ -36,7 +37,6 @@
                             <div class="product-actions">
                                 <button class="btn-add-cart" @onclick="() => BuyProduct(product)">Købe</button>
                                 <button class="btn-read-more" @onclick="() => ShowProductDetails(product)">Beskrivelse</button>
-                                <!-- Жмакаешь — и вылезает поп-ап с инфой -->
                             </div>
                         </div>
                     </div>
@@ -45,6 +45,7 @@
         </div>
     </div>
 </section>
+
 
 <!-- ==================== ПОП-АП С ИНФОИ==================== -->
 <!-- Это типа окошко, где больше инфы про шмотку -->

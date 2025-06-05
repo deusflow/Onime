@@ -1,0 +1,187 @@
+/* ==========================================
+   Переменные для цветов и общие настройки
+   ========================================== */
+:root {
+    --bg-dark: #1C1C1E;
+    --bg-secondary: #2C2C2E;
+    --text-white: #FFFFFF;
+    --accent: #64D2FF;
+    --shadow-base: rgba(0, 0, 0, 0.4);
+    --shadow-hover: rgba(0, 0, 0, 0.6);
+    --border-separator: rgba(255, 255, 255, 0.1);
+    --radius: 12px;
+    --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* -------------------------------------------
+   Контейнер и сетка товаров
+   ------------------------------------------- */
+.container-full {
+    width: 100%;
+    padding: 0 10px;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* -------------------------------------------
+   Карточка продукта
+   ------------------------------------------- */
+.product-card {
+    background: var(--bg-dark);
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 10px var(--shadow-base);
+    position: relative; /* для псевдоэлементов */
+}
+.product-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 10px 30px var(--shadow-hover);
+}
+
+/* -------------------------------------------
+   Обёртка изображения
+   ------------------------------------------- */
+.product-image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    background-color: var(--bg-secondary);
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Добавляем плавный градиент от изображения к инфоблоку */
+.product-image-wrapper::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px; /* зона плавного перехода */
+    background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0) 0%,
+            var(--bg-dark) 100%
+    );
+    pointer-events: none;
+}
+
+.product-image-wrapper img {
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+.product-card:hover .product-image-wrapper img {
+    transform: scale(1.03);
+}
+
+/* -------------------------------------------
+   Информация о продукте (текст и кнопки)
+   ------------------------------------------- */
+/*
+  Чтобы инфоблок «перетекал» из-под изображения:
+  - Смещаем его вверх на небольшую величину.
+  - Добавляем внутренний отступ сверху, чтобы содержимое не перекрывалось.
+  - Накладываем легкую тень сверху для глубины.
+*/
+.product-info {
+    position: relative;
+    margin-top: -30px;           /* перекрытие на 30px */
+    /* компенсируем место перекрытия */
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    padding: 30px 1rem 1rem;
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
+    box-shadow: inset 0 8px 10px -8px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.product-title {
+    font-family: var(--font-system);
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--text-white);
+}
+
+.product-price {
+    font-family: var(--font-system);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.product-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: auto;
+}
+
+/* -------------------------------------------
+   Кнопки в стиле Apple
+   ------------------------------------------- */
+.btn-add-cart,
+.btn-read-more {
+    flex: 1;
+    padding: 0.6rem 0.8rem;
+    font-family: var(--font-system);
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: var(--bg-secondary);
+    color: var(--text-white);
+    border: 1px solid var(--border-separator);
+    transition:
+            background-color 0.2s ease,
+            transform 0.2s ease,
+            border-color 0.2s ease,
+            box-shadow 0.2s ease;
+}
+
+.btn-add-cart {
+    border-color: var(--accent);
+}
+
+.btn-read-more {
+    border-color: var(--border-separator);
+    color: var(--accent);
+}
+
+.btn-add-cart:hover,
+.btn-read-more:hover {
+    background-color: #3A3A3C;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.btn-add-cart:active,
+.btn-read-more:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.btn-read-more:hover {
+    border-color: var(--accent);
+    color: #A0EAFF;
+}
