@@ -10,14 +10,16 @@
 
 /* Базовые стили всех кнопок */
 .nav-button-base {
-    position: absolute;
+    position: fixed; /* Меняем на fixed для более точного позиционирования */
     background-color: #59CCCC;
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
-    z-index: 1001;
+    z-index: 1000;
     pointer-events: auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform-origin: center;
+    transform: translate(-50%, -50%);
 }
 
 /* Обычные кнопки */
@@ -50,7 +52,8 @@
 .nav-button-standard:hover,
 .nav-button-profile:hover {
     background-color: #48bbbb;
-    transform: translateY(-2px);
+    /* Уменьшаем смещение для более мягкой анимации и адаптивности */
+    transform: translate(-50%, -52%);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
@@ -95,87 +98,69 @@
 
 /* Позиционирование кнопок */
 .nav-button-home {
-    top: 10vh;
-    left: 27.5vw;
+    top: 5vh;
+    left: 34.3vw;
 }
 
 .nav-button-shop {
-    top: 10vh;
-    left: 55.7vw;
+    top: 5vh;
+    left: 62vw;
 }
 
 .nav-button-zone {
-    top: 10vh;
-    left: 84vw;
+    top: 5vh;
+    left: 90vw;
 }
 
-.nav-button-contact {
-    top: 10px;
-    left: 800px;
+.nav-button-profile {
+    top: 7vh;
+    left: 7vw;
 }
 
 /* Медиа-запросы */
 @media (max-width: 992px) {
-    .nav-button-standard {
-        padding: 12px 30px;
-        font-size: 14px;
+    .nav-button-base {
+        transform: translate(-50%, -50%) scale(0.9);
     }
-
-    .nav-button-profile {
-        width: 100px;
-        height: 100px;
-        left: 510px;
-    }
-
-    .profile-avatar-img {
-        width: 80px;
-        height: 80px;
-    }
-
-    .nav-button-home { left: 150px; }
-    .nav-button-shop { left: 270px; }
-    .nav-button-zone { left: 390px; }
-    .nav-button-contact { left: 630px; }
+    
+    .nav-button-home { left: 25vw; }
+    .nav-button-shop { left: 45vw; }
+    .nav-button-zone { left: 65vw; }
+    .nav-button-profile { left: 85vw; }
 }
 
 @media (max-width: 768px) {
-    .nav-button-standard {
-        padding: 10px 25px;
-        font-size: 12px;
+    .nav-button-base {
+        transform: translate(-50%, -50%) scale(0.8);
     }
-
-    .nav-button-profile {
-        width: 80px;
-        height: 80px;
-        left: 420px;
-    }
-
-    .profile-avatar-img {
-        width: 65px;
-        height: 65px;
-    }
-
-    .nav-button-home { left: 120px; }
-    .nav-button-shop { left: 220px; }
-    .nav-button-zone { left: 320px; }
-    .nav-button-contact { left: 520px; }
+    
+    .nav-button-home { left: 20vw; }
+    .nav-button-shop { left: 40vw; }
+    .nav-button-zone { left: 60vw; }
+    .nav-button-profile { left: 80vw; }
 }
 
 @media (max-width: 576px) {
-    .nav-button-standard {
-        padding: 8px 20px;
-        font-size: 11px;
+    .nav-button-base {
+        transform: translate(-50%, -50%) scale(0.7);
     }
-
-    .nav-button-profile {
-        width: 60px;
-        height: 60px;
+    
+    /* Вертикальное расположение на маленьких экранах */
+    .nav-button-home { 
+        top: 10vh;
+        left: 50vw;
     }
-
-    .profile-avatar-img {
-        width: 50px;
-        height: 50px;
-        border-width: 2px;
+    .nav-button-shop { 
+        top: 25vh;
+        left: 50vw;
+    }
+    .nav-button-zone { 
+        top: 40vh;
+        left: 50vw;
+    }
+    .nav-button-profile { 
+        top: 55vh;
+        left: 50vw;
     }
 }
 
@@ -328,9 +313,10 @@
 }
 
 .nav-btn:hover {
-    transform: translate(-50%, -2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    background: #4db8b8;
+    /* Для .nav-btn, если нужно, можно также скорректировать */
+    background-color: rgba(89, 204, 204, 0.4);
+    transform: translate(-50%, -52%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .nav-btn:active {
@@ -386,7 +372,7 @@
 
 .nav-button:hover {
     background-color: rgba(89, 204, 204, 0.4);
-    transform: translateY(-2px);
+    transform: translate(-50%, -52%);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -430,7 +416,7 @@
 
 .navigation-button:hover {
     background-color: #48bbbb;
-    transform: translateY(-2px);
+    transform: translate(-50%, -52%);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
@@ -485,23 +471,52 @@
 .btn {
     display: inline-block;
     padding: 0.75rem 1.5rem;
-    border-radius: var(--border-radius);
+    border-radius: 25px;
     font-size: 1.1rem;
     font-weight: 500;
     text-align: center;
     text-decoration: none;
     cursor: pointer;
-    transition: var(--transition);
+    transition: all 0.3s ease;
     border: none;
 }
 
 .btn-primary {
-    background-color: var(--primary-color);
+    background-color: #4a6bff;
     color: white;
 }
 
 .btn-primary:hover {
     background-color: #3a5bd9;
-    transform: translateY(-2px);
+    transform: translateY(-2%);
     box-shadow: 0 4px 12px rgba(74, 107, 255, 0.3);
+}
+
+/* Позиционирование кнопок в вырезах дизайна */
+.btn-fixed {
+    position: absolute;
+    top: var(--button-top);
+    left: var(--button-left);
+    transform: translate(-50%, -50%);
+}
+
+/* Пример для конкретных кнопок */
+.btn-home {
+    --button-top: 50px;
+    --button-left: 150px;
+}
+
+.btn-shop {
+    --button-top: 270px;
+    --button-left: 270px;
+}
+
+.btn-zone {
+    --button-top: 390px;
+    --button-left: 390px;
+}
+
+.btn-contact {
+    --button-top: 630px;
+    --button-left: 630px;
 }

@@ -76,8 +76,6 @@ window.blazorLog = function(message) {
 
 // 7. Инициализация при загрузке страницы
 
-// Когда страница загрузилась — найдём все секции и подсветим первую кнопку
-// (если секции есть)
 document.addEventListener('DOMContentLoaded', function() {
     // Собираем все элементы с классом .section
     sections = Array.from(document.querySelectorAll('.section'));
@@ -85,5 +83,38 @@ document.addEventListener('DOMContentLoaded', function() {
     if (sections.length > 0) {
         updateActiveButton(sections[0].id);
     }
+    // === Блокировка скролла мышью и свайпами для .products-wrapper ===
+    var productsWrapper = document.querySelector('.products-wrapper');
+    if (productsWrapper) {
+        // wheel (мышь, тачпад)
+        productsWrapper.addEventListener('wheel', function(e) {
+            e.preventDefault();
+        }, { passive: false });
+        // touchmove (мобильные свайпы)
+        productsWrapper.addEventListener('touchmove', function(e) {
+            e.preventDefault();
+        }, { passive: false });
+        // keyboard arrows (опционально)
+        productsWrapper.addEventListener('keydown', function(e) {
+            if (['ArrowLeft','ArrowRight','PageUp','PageDown','Home','End'].includes(e.key)) {
+                e.preventDefault();
+            }
+        });
+    }
     // dotNetHelper Blazor может передать отдельно, если надо
+
+    // Блокируем все виды скролла
+    document.addEventListener('wheel', function(e) {
+        e.preventDefault();
+    }, { passive: false });
+
+    document.addEventListener('touchmove', function(e) {
+        e.preventDefault();
+    }, { passive: false });
+
+    document.addEventListener('keydown', function(e) {
+        if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', 'Space'].includes(e.code)) {
+            e.preventDefault();
+        }
+    }, { passive: false });
 });

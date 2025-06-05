@@ -1,273 +1,361 @@
-/* Базовые стили */
-:root {
-    --primary-color: #4a6bff;
-    --accent-color: #59CCCC; /* Добавленный цвет для навигации */
-    --secondary-color: #f8f9fa;
-    --text-color: #333;
-    --bg-color: #fff;
-    --transition: all 0.3s ease;
-    --border-radius: 20px; /* Радиус скругления навигации */
-    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --spacing: 2rem;
-
-    /* Переменные для масштаба кнопок */
-    --scale-btn-home: 1.5;      /* Масштаб для кнопки Home (1 = 100%) */
-    --scale-btn-shop: 1.5;      /* Масштаб для кнопки Shop (1 = 100%) */
-    --scale-btn-tzone: 1.5;     /* Масштаб для кнопки T.Zone (1 = 100%) */
-}
-
-* {
+/* === Base styles === */
+html, body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-html, body {
-    height: 100%;
-    width: 100%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: var(--text-color);
     overflow: hidden;
-    touch-action: none;
+    height: 100%;
 }
 
 body {
-    overscroll-behavior: none;
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+    background: url("images/background.svg") center top repeat-x fixed;
+    background-size: 100vw auto !important;
+    color: #222;
 }
 
-/* Отключаем стандартный скроллбар */
-::-webkit-scrollbar {
-    display: none;
-}
-
-.landing-container {
-    width: 100vw;
+.section {
     height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
     overflow: hidden;
+    background: none;
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.container-full {
+    width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    padding: 0;
+}
+
+h1, h2, h3 {
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.btn, .btn-primary {
+    background: #ff4b2b;
+    color: #fff;
+    border: none;
+    padding: 12px 32px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin: 8px 0;
+}
+.btn-primary:hover {
+    background: #ff6f4d;
+}
+
+/* === Hero Section === */
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    text-align: center;
+}
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 12px;
+}
+
+/* === Products Section === */
+.products-wrapper {
+    overflow-x: hidden;  /* Меняем на hidden */
+    scroll-behavior: smooth;
+    padding-bottom: 16px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.products-wrapper:has(.scroll-enabled) {
+    pointer-events: auto; /* allow pointer events if a special class is set */
+}
+.products-grid {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    min-width: 100vw;
+    padding: 24px 40px;
+    box-sizing: border-box;
+}
+.product-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    min-width: 260px;
+    max-width: 260px;
+    flex: 0 0 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 18px 12px 20px 12px;
+    transition: transform 0.2s, box-shadow 0.2s;
     position: relative;
 }
-
-/* Стили для GIF-индикатора активной секции */
-.active-indicator {
-    width: 20px;
-    height: 20px;
-    margin-left: 8px;
+.product-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.13);
 }
-
-/* Контейнеры и отступы */
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 var(--spacing);
-}
-
-/* Основной контейнер для горизонтального скролла */
-main {
+.product-image-wrapper {
+    width: 180px;
+    height: 180px;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    background: #f0f0f5;
+    border-radius: 12px;
+    overflow: hidden;
+}
+.product-image-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+.product-title {
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+}
+.product-price {
+    font-weight: 600;
+    color: #ff4b2b;
+    margin-bottom: 10px;
+    display: block;
+}
+.product-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+}
+.btn-add-cart, .btn-read-more {
+    background: #ff4b2b;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.btn-add-cart:hover, .btn-read-more:hover {
+    background: #ff6f4d;
+}
+
+/* === Modal Popup === */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.35);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal-content {
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px 28px 24px 28px;
+    min-width: 320px;
+    max-width: 90vw;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    position: relative;
+    text-align: center;
+}
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: transparent;
+    border: none;
+    font-size: 1.3rem;
+    color: #ff4b2b;
+    cursor: pointer;
+}
+
+/* === Categories Section === */
+.categories-grid {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    margin-top: 24px;
+}
+.category-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    padding: 24px 32px;
+    min-width: 180px;
+    text-align: center;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+.category-card:hover {
+    box-shadow: 0 6px 18px rgba(0,0,0,0.13);
+    transform: translateY(-4px) scale(1.04);
+}
+
+/* === Profile Section === */
+.profile-section {
+    background: #f0f4fa;
+    border-radius: 18px;
+    margin-top: 32px;
+    padding: 40px 0 32px 0;
+}
+.profile-container {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+    margin-top: 24px;
+}
+.profile-avatar {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.09);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.profile-avatar img {
     width: 100%;
     height: 100%;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: auto;
-    -webkit-overflow-scrolling: touch;
-    position: relative;
-    margin-top: 60px; /* Высота навигационной панели */
+    object-fit: cover;
 }
-
-/* Секции */
-.section {
-    width: 100vw;
-    height: calc(100vh - 60px);
-    min-width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    scroll-snap-align: start;
-    position: relative;
-    flex-shrink: 0;
-    overflow-y: auto;
-    padding: 2rem;
-}
-
-/* Контейнер внутри секции */
-.section .container {
-    position: relative;
-    z-index: 2; /* Поверх фона */
-    width: 100%;
-    max-width: 1200px;
-    padding: var(--spacing);
-}
-
-/* Обеспечиваем, что содержимое внутри контейнера видно поверх фона */
-.hero-content, .products-grid, .categories-grid, .about-content, .contact-info {
-    position: relative;
-    z-index: 3;
-}
-
-
-/* Фоновое изображение для всех секций */
-#home,
-#products,
-#categories,
-#about,
-#profile,
-#contact {
-    background: transparent;
-    position: relative;
-    overflow: hidden;
-}
-
-#home::before,
-#products::before,
-#categories::before,
-#about::before,
-#profile::before,
-#contact::before {
-    content: '';
+.profile-level {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 98%;
-    height: 98%;
-    transform: translate(-50%, -50%);
-    background-image: url('images/background.svg');
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: 1;
-    opacity: 0.9;
-    max-width: 1400px; /* Максимальная ширина для очень широких экранов */
-    transition: all 0.3s ease; /* Плавное изменение размера */
-}
-
-/* Переопределение цветов текста для читаемости */
-#home {
-    color: #333;
-    text-align: center;
-}
-#products {
-    position: relative;
-    min-height: 70vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-    color: #333;
-}
-#categories { color: #333; }
-#about { color: #333; }
-#profile { color: #333; }
-#contact { color: #333; }
-
-/* Улучшаем читаемость контента */
-.section .container {
-    background-color: transparent;
-    box-shadow: none;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-    position: relative;
-}
-
-    /* Настройки фона для мобильных устройств */
-    #home::before,
-    #products::before,
-    #categories::before,
-    #about::before,
-    #profile::before,
-    #contact::before {
-        width: 90%;
-        height: auto;
-        aspect-ratio: 1/1; /* Сохраняем пропорции */
-        max-height: 80vh;
-    }
-
-
-/* Стили для главного баннера */
-.hero-content {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-}
-
-.hero-content h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1.5rem;
-    color: var(--primary-color);
-}
-
-.hero-content .lead {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    color: var(--text-color);
-}
-
-/* О нас */
-.about-content {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.about-content p {
-    margin-bottom: 1rem;
-    line-height: 1.6;
-}
-
-/* Контакты */
-.contact-info {
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.contact-info p {
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-}
-
-/* Анимация скролла */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Стили для сообщения об ошибке */
-#blazor-error-ui {
-    background: lightyellow;
     bottom: 0;
-    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
-    display: none;
     left: 0;
-    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
+    right: 0;
+    background: #ff4b2b;
+    color: #fff;
+    font-size: 0.95rem;
+    padding: 4px 0;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    text-align: center;
+}
+.profile-info {
+    flex: 1;
+}
+.profile-username {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.profile-status {
+    background: #d1ffd1;
+    color: #1a7f1a;
+    border-radius: 8px;
+    padding: 2px 10px;
+    font-size: 0.95rem;
+    margin-left: 8px;
+}
+.profile-stats {
+    display: flex;
+    gap: 24px;
+    margin: 12px 0 8px 0;
+}
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.stat-label {
+    font-size: 0.95rem;
+    color: #888;
+}
+.stat-value {
+    font-weight: 600;
+    color: #222;
+}
+.profile-bio {
+    margin-top: 10px;
+    font-style: italic;
+    color: #444;
 }
 
-#blazor-error-ui .dismiss {
-    cursor: pointer;
-    position: absolute;
-    right: 0.75rem;
-    top: 0.5rem;
+/* === About Section === */
+.about-content {
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px 32px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    margin-top: 24px;
+    text-align: center;
 }
 
-.validation-message {
-    color: #e50000;
+/* === Responsive === */
+@media (max-width: 1200px) {
+    .container {
+        max-width: 98vw;
+        padding: 0 8px;
+    }
+    .products-grid {
+        gap: 18px;
+        padding: 16px 8px;
+    }
 }
-
-.blazor-error-boundary {
-    background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTYiIGhlaWdodD0iNDkiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIG92ZXJmbG93PSJoaWRkZW4iPjxkZWZzPjxjbGlwUGF0aCBpZD0iY2xpcDAiPjxyZWN0IHg9IjIzNSIgeT0iNTEiIHdpZHRoPSI1NiIgaGVpZ2h0PSI0OSIvPjwvY2xpcFBhdGg+PC9kZWZzPjxnIGNsaXAtcGF0aD0idXJsKGNjbGlwMCkiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yMzUgLTUxKSI+PHBhdGggZD0iTTI2My41MDYgNTFDMjY0LjcxNyA1MSAyNjUuODEzIDUxLjQ4MzcgMjY2LjYwNiA1Mi4yNjU4TDI2Ny4wNTIgNTIuNzk4NyAyNjcuNTM5IDUzLjYyODMgMjkwLjE4NSA5Mi4xODMxIDI5MC41NDUgOTIuNzk1IDI5MC42NTYgOTIuOTk2QzI5MC44NzcgOTMuNTEzIDI5MSA5NC4wODE1IDI5MSA5NC42NzgyIDI5MSA5Ny4wNjUxIDI4OS4wMzggOTkgMjg2LjYxNyA5OUwyNDAuMzgzIDk5QzIzNy45NjMgOTkgMjM2IDk3LjA2NTEgMjM2IDk0LjY3ODIgMjM2IDk0LjM3OTkgMjM2LjAzMSA5NC4wODg2IDIzNi4wODkgOTMuODA3MkwyMzYuMzM4IDkzLjAxNjIgMjM2Ljg1OCA5Mi4xMzE0IDI1OS40NzMgNTMuNjI5NCAyNTkuOTYxIDUyLjc5ODUgMjYwLjQwNyA1Mi4yNjU4QzI2MS4yIDUxLjQ4MzcgMjYyLjI5NiA1MSAyNjMuNTA2IDUxWk0yNjMuNTg2IDY2LjAxODNDMjYwLjczNyA2Ni4wMTgzIDI1OS4zMTMgNjcuMTI0NSAyNTkuMzEzIDY5LjMzNyAyNTkuMzEzIDY5LjYxMDIgMjU5LjMzMiA2OS44NjA4IDI1OS4zNzEgNzAuMDg4N0wyNjEuNzk1IDg0LjAxNjEgMjY1LjM4IDg0LjAxNjEgMjY3LjgyMSA2OS43NDc1QzI2Ny44NiA2OS43MzA5IDI2Ny44NzkgNjkuNTg3NyAyNjcuODc5IDY5LjMxNzkgMjY3Ljg3OSA2Ny4xMTgyIDI2Ni40NDggNjYuMDE4MyAyNjMuNTg2IDY2LjAxODNaTTI2My41NzYgODYuMDU0N0MyNjEuMDQ5IDg2LjA1NDcgMjU5Ljc4NiA4Ny4zMDA1IDI1OS43ODYgODkuNzkyMSAyNTkuNzg2IDkyLjI4MzcgMjYxLjA0OSA5My41Mjk1IDI2My41NzYgOTMuNTI5NSAyNjYuMTE2IDkzLjUyOTUgMjY3LjM4NyA5Mi4yODM3IDI2Ny4zODcgODkuNzkyMSAyNjcuMzg3IDg3LjMwMDUgMjY2LjExNiA4Ni4wNTQ3IDI2My41NzYgODYuMDU0N1oiIGZpbGw9IiNGRkU1MDAiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvZz48L3N2Zz4=) no-repeat 1rem/1.8rem, #b32121;
-    padding: 1rem 1rem 1rem 3.7rem;
-    color: white;
+@media (max-width: 900px) {
+    .container {
+        max-width: 100vw;
+        padding: 0 4px;
+    }
+    .products-grid {
+        gap: 10px;
+        padding: 8px 2px;
+    }
+    .category-card {
+        min-width: 120px;
+        padding: 12px 8px;
+    }
+    .profile-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+    }
 }
-
-.blazor-error-boundary::after {
-    content: "An error has occurred."
+@media (max-width: 600px) {
+    .hero-content h1 {
+        font-size: 1.3rem;
+    }
+    .product-card {
+        min-width: 140px;
+        max-width: 140px;
+        padding: 6px 2px 8px 2px;
+    }
+    .product-image-wrapper {
+        width: 90px;
+        height: 90px;
+    }
+    .category-card {
+        min-width: 80px;
+        padding: 8px 4px;
+    }
+    .about-content {
+        padding: 8px 4px;
+    }
+    .profile-section {
+        padding: 16px 0 12px 0;
+    }
+    .profile-avatar {
+        width: 60px;
+        height: 60px;
+    }
 }
-
-.darker-border-checkbox.form-check-input {
-    border-color: #929292;
-}
-
-
