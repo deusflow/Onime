@@ -10,6 +10,12 @@
     overflow: hidden;
 }
 
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0;
+}
+
 .contact-section::before {
     content: '';
     position: absolute;
@@ -48,44 +54,27 @@
 /* Сетка для колонок */
 .contact-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
     margin-bottom: 50px;
     position: relative;
     z-index: 2;
-}
-
-@media (max-width: 1200px) {
-    .contact-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .faq-column {
-        grid-column: span 2;
-    }
-}
-
-@media (max-width: 768px) {
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .faq-column {
-        grid-column: auto;
-    }
+    align-items: stretch; /* Добавлено для одинаковой высоты колонок */
 }
 
 /* Стилизация карточек */
 .contact-card {
     background: rgba(30, 30, 30, 0.85);
     border-radius: 20px;
-    padding: 30px;
+    padding: 0;
     height: 100%;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(89, 204, 204, 0.2);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     transition: all 0.3s ease;
+    display: flex; /* Добавлено для растяжения содержимого */
+    flex-direction: column;
 }
 
 .contact-card:hover {
@@ -95,9 +84,9 @@
 }
 
 .card-title {
-    font-size: 1.8rem;
-    font-weight: 600;
-    margin-bottom: 25px;
+    font-size: 1rem;
+    font-weight: 60;
+    margin-bottom: 15px;
     color: #59CCCC;
     position: relative;
     padding-bottom: 12px;
@@ -115,14 +104,14 @@
 
 /* Стили для блока О нас */
 .about-content {
-    margin-bottom: 25px;
-    line-height: 1.6;
+    margin-bottom: 20px;
+    line-height: 1;
     color: #2a2a2a;
 }
 
 .about-content p {
     margin-bottom: 15px;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(30, 30, 30, 0.8);
 }
 
 .highlight-text {
@@ -287,14 +276,13 @@
 
 /* Форма обратной связи */
 .contact-form-container {
-    margin-top: 50px;
     position: relative;
     z-index: 2;
 }
 
 .form-card {
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 700px;
+    margin: 0px auto;
 }
 
 .contact-form {
@@ -414,23 +402,4 @@ textarea.form-control {
 
 .contact-title:hover {
     animation: glitch 1s linear infinite;
-}
-
-/* Адаптивность */
-@media (max-width: 600px) {
-    .contact-title {
-        font-size: 2rem;
-    }
-
-    .card-title {
-        font-size: 1.5rem;
-    }
-
-    .contact-card {
-        padding: 20px;
-    }
-
-    .btn-submit {
-        width: 100%;
-    }
 }
