@@ -21,6 +21,38 @@
     transform-origin: center;
     transform: translate(-50%, -50%);
 }
+.nav-button-base-contact {
+    position: fixed;                 
+    width: 18vw;                      /* Адаптивная ширина. Можно задать в %, px, rem */
+    height: 8vw;                     
+    top: 50vh;                       /* Расположение кнопки относительно верхнего края экрана */
+    left: 10vw;                      /* Расположение кнопки относительно левого края экрана */
+    border: none;                    /* Убираем рамку кнопки */
+    cursor: pointer;                 /* Курсор меняется на "руку" при наведении */
+    z-index: 1000;                   /* Поверх остальных элементов */
+    pointer-events: auto;            /* Кнопка "кликабельна" */
+    background-image: url('../images/Contact.svg'); /* Фоновая иконка для кнопки */
+    background-position: center;     /* Иконка по центру кнопки */
+    background-repeat: no-repeat;    /* Иконка не повторяется */
+    background-size: contain;        /* Иконка вписывается в размеры кнопки с сохранением пропорций */
+    background-color: transparent;   /* Фоновый цвет прозрачный */
+    transform: none;                 /* Не центрируем, так как используются конкретные координаты `top` и `left` */
+    padding: 0;                      /* Убираем внутренние отступы */
+    margin: 0;                       /* Убираем внешние отступы */
+    transition: all 0.3s ease;       /* Плавная анимация при наведении */
+}
+
+
+.nav-button-base-contact:active {
+    transform: translate(-50%, -50%) scale(0.95); /* Уменьшаем кнопку при нажатии */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Уменьшаем тень при нажатии */
+}
+.nav-button-base-contact.active {
+    transform: translate(31vw, -30vh);
+    height: 3vh;
+    background-color: transparent;
+    box-shadow: none ;
+}
 
 /* Обычные кнопки */
 .nav-button-standard {
@@ -33,6 +65,13 @@
     font-size: 1.3rem;
 }
 
+.nav-button-contacto {
+    padding: 0; /* Убираем padding */
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 /* Профильная кнопка */
 .nav-button-profile {
     width: 100px;
@@ -87,6 +126,16 @@
     height: 30px;
     margin-left: 8px;
 }
+.active-indicator-contact {
+    position: absolute !important; /* Центрирование внутри кнопки */
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10vw; 
+    height: 4vh; 
+    pointer-events: none; /* Игнорирование кликов по гифке */
+}
+
 
 .profile-active-indicator {
     position: absolute;
@@ -117,50 +166,146 @@
     left: 7vw;
 }
 
-/* Медиа-запросы */
-@media (max-width: 992px) {
-    .nav-button-base {
-        transform: translate(-50%, -50%) scale(0.9);
+/* Медиа-запросы */ 
+
+@media (max-width: 900px) {
+    .nav-button-home {
+        top: 6vh;
+        left: 34vw;
+        width: 12vw;
+        height: 4vh;
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
-    
-    .nav-button-home { left: 25vw; }
-    .nav-button-shop { left: 45vw; }
-    .nav-button-zone { left: 65vw; }
-    .nav-button-profile { left: 85vw; }
+
+    .nav-button-shop {
+        top: 6vh;
+        left: 62vw;
+        width: 12vw;
+        height: 4vh;
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-button-zone {
+        top: 6vh;
+        left: 90vw;
+        width: 12vw;
+        height: 4vh;
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-button-contact {
+        top: 14vh;
+        left: 34vw;
+        width: 12vw;
+        height: 4vh;
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-button-profile {
+        top: 7vh;
+        left: 7vw;
+        width: 9vw;
+        height: 9vw;
+        max-width: 12vw;
+        max-height: 12vw;
+        border-radius: 50%;
+        padding: 0;
+        font-size: 0.7rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-button-profile .profile-avatar-img {
+        width: 80%;
+        height: 80%;
+        min-width: 2em;
+        min-height: 2em;
+        max-width: 90%;
+        max-height: 90%;
+    }
 }
+
 
 @media (max-width: 768px) {
-    .nav-button-base {
-        transform: translate(-50%, -50%) scale(0.8);
+    .nav-button-home {
+        top: 6vh;
+        left: 34vw;
+        width: 12vw;
+        height: 4vh;
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
-    
-    .nav-button-home { left: 20vw; }
-    .nav-button-shop { left: 40vw; }
-    .nav-button-zone { left: 60vw; }
-    .nav-button-profile { left: 80vw; }
-}
 
-@media (max-width: 576px) {
-    .nav-button-base {
-        transform: translate(-50%, -50%) scale(0.7);
+    .nav-button-shop {
+        top: 6vh;
+        left: 62vw;
+        width: 12vw;
+        height: 4vh;
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
-    
-    /* Вертикальное расположение на маленьких экранах */
-    .nav-button-home { 
-        top: 10vh;
-        left: 50vw;
+
+    .nav-button-zone {
+        top: 6vh;
+        left: 90vw;
+        width: 12vw;
+        height: 4vh;
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
-    .nav-button-shop { 
-        top: 25vh;
-        left: 50vw;
+
+    .nav-button-contact {
+        top: 14vh;
+        left: 34vw;
+        width: 12vw;
+        height: 4vh;
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
-    .nav-button-zone { 
-        top: 40vh;
-        left: 50vw;
+
+    .nav-button-profile {
+        top: 7vh;
+        left: 7vw;
+        width: 9vw;
+        height: 9vw;
+        max-width: 12vw;
+        max-height: 12vw;
+        border-radius: 50%;
+        padding: 0;
+        font-size: 0.7rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
-    .nav-button-profile { 
-        top: 55vh;
-        left: 50vw;
+
+    .nav-button-profile .profile-avatar-img {
+        width: 80%;
+        height: 80%;
+        min-width: 2em;
+        min-height: 2em;
+        max-width: 90%;
+        max-height: 90%;
     }
 }
 
@@ -240,7 +385,7 @@
 }
 
 
-/* Стили для навигационной панели и индикатора активности */
+/* Стили для навигационной панели и ин��икатора активности */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -402,7 +547,7 @@
     background-color: #59CCCC;
     color: white;
     border: none;
-    border-radius: 25px; /* Круглые края */
+    border-radius: 25px; /* Круглые кра�� */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: all 0.3s ease;
@@ -411,7 +556,7 @@
     justify-content: center;
     min-width: 120px;
     z-index: 100;
-    pointer-events: auto; /* Позволяет кликать по кнопкам */
+    pointer-events: auto; /* Позволяет кликать по кноп��ам */
 }
 
 .navigation-button:hover {
@@ -435,7 +580,7 @@
     width: 100%;
     height: 100%;
     z-index: 1000;
-    pointer-events: none; /* Чтобы контейнер не блокировал клики на странице */
+    pointer-events: none; /* Чтобы контейнер не блокировал клики на страниц�� */
 }
 
 .nav-logo {
@@ -519,4 +664,93 @@
 .btn-contact {
     --button-top: 630px;
     --button-left: 630px;
+}
+
+@media (max-width: 300px) {
+    .nav-button-home {
+        top: 4vh !important;
+        left: 34vw !important;
+        padding: 5px 10px !important;
+        font-size: 0.2em !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    .active-indicator {
+        width: 3vw;
+        height: 5vh;
+        margin-bottom: 4px;
+        margin-left: 6px;
+    }
+
+    .nav-button-shop {
+        top: 4vh !important;
+        left: 62vw !important;
+        padding: 5px 10px !important;
+        font-size: 0.2em !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .nav-button-zone {
+        top: 4vh;
+        left: 90vw;
+        width: 12vw;
+        padding: 5px 10px !important;
+        height: 4vh;
+        font-size: 0.4rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-button-contact {
+        top: 80vh;
+        left: 10vw;
+        width: 12vw;
+        padding: 5px 10px !important;
+        height: 4vh;
+        font-size: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-button-profile {
+        top: 7vh;
+        left: 7vw;
+        width: 9vw;
+        height: 9vw;
+        max-width: 12vw;
+        max-height: 12vw;
+        border-radius: 50%;
+        padding: 0;
+        font-size: 0.7rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-button-profile .profile-avatar-img {
+        width: 80%;
+        height: 80%;
+        min-width: 2em;
+        min-height: 2em;
+        max-width: 90%;
+        max-height: 90%;
+    }
+
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        text-align: center;
+    }
+    .hero-content h1 {
+        font-size: 1rem;
+        margin-bottom: 1px;
+    }
 }

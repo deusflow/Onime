@@ -1,0 +1,45 @@
+.animated-logo {
+    display: inline-block; /* Убедитесь, что элемент не ломает макет */
+    animation: float 3s ease-in-out infinite; /* Анимация бесконечна */
+    position: relative; /* Это позволит применить смещение через 'top' */
+    right: 17vw; /* Отступ слева для позиционирования */
+    z-index: 1000; /* Убедитесь, что логотип поверх других элементов */
+}
+
+/* Ключевые кадры для "плавания" вверх-вниз */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0); /* Начальная и конечная позиции */
+    }
+    50% {
+        transform: translateY(-1%); /* Относительное движение вверх */
+    }
+}
+
+.animated-logo2 {
+    display: inline-block;
+    animation: float-reverse 3s ease-in-out infinite; /* Новая анимация! */
+    position: relative;
+    left: 28vw;
+    top: -97vh;
+    z-index: 900;
+    width: auto;
+    height: auto;
+}
+
+.animated-logo2 img {
+    width: 48vw; /* Управляем шириной изображения */
+    height: auto; /* Сохраняем пропорции */
+    object-fit: contain; /* Если изображение вылезает за пределы */
+    max-width: 100%; /* Защита от выхода за пределы родителя */
+    max-height: 100%; /* Аналогично для высоты */
+}
+
+@keyframes float-reverse {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(1%); /* Направление ВНИЗ вместо -1% */
+    }
+}

@@ -9,11 +9,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f047eb9-94c7-4c61-8d46-eb3157542f4b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/wwwroot/css/contact-section.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wwwroot/css/logo.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OnimeBestofrieeeendo.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnimeBestofrieeeendo.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Components/App.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Components/App.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Components/Layout/NavMenu.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Components/Layout/NavMenu.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Components/Pages/Home.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Components/Pages/Home.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wwwroot/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wwwroot/css/nav-menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/nav-menu.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/images/background.svg" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/images/background.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/js/site.js" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/js/site.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +37,11 @@
   </component>
   <component name="Git.Settings">
     <option name="PUSH_AUTO_UPDATE" value="true" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
     <option name="RESET_MODE" value="HARD" />
   </component>
@@ -50,6 +58,8 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///AIAssistantSnippet.." root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet.." root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bf9021a960b74107a7e141aa06bc9d8a0a53c929178c2fb95b1597be8af8dc/ExceptionDispatchInfo.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -64,25 +74,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.OnimeBestofrieeeendo: http.executor&quot;: &quot;Run&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.codeium.AppSettingsConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.OnimeBestofrieeeendo: http.executor": "Run",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "test",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.codeium.AppSettingsConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.OnimeBestofrieeeendo: http">
     <configuration name="OnimeBestofrieeeendo: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/OnimeBestofrieeeendo.csproj" />
@@ -126,7 +136,8 @@
       <workItem from="1748301282531" duration="30998000" />
       <workItem from="1749060346623" duration="2497000" />
       <workItem from="1749063467477" duration="17994000" />
-      <workItem from="1749152983787" duration="4810000" />
+      <workItem from="1749152983787" duration="31026000" />
+      <workItem from="1749314612835" duration="4015000" />
     </task>
     <task id="LOCAL-00001" summary="New vers">
       <option name="closed" value="true" />
@@ -232,7 +243,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748978902796</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="test design">
+      <option name="closed" value="true" />
+      <created>1749157934499</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1749157934499</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,7 +284,8 @@
     <MESSAGE value="Cleaned up the code a bit, not the final version." />
     <MESSAGE value="Tidied up the code, removed unnecessary parts, replaced class names with correct ones (errors were found)" />
     <MESSAGE value="New popup window when a user buys something, logic added to the purchase button." />
-    <option name="LAST_COMMIT_MESSAGE" value="New popup window when a user buys something, logic added to the purchase button." />
+    <MESSAGE value="test design" />
+    <option name="LAST_COMMIT_MESSAGE" value="test design" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

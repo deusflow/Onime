@@ -4,6 +4,7 @@
 @using OnimeBestofrieeeendo.Models
 @using System.Data
 @using Npgsql
+@inject NavigationManager NavigationManager
 
 <!-- Отдельные навигационные кнопки -->
 <div class="nav-container">
@@ -43,15 +44,19 @@
         }
     </button>
     
+    @if (CurrentSection == "home" || CurrentSection == "contact")
+{
     <button @onclick='() => SetActive("contact")' 
-            class="nav-button-base nav-button-standard nav-button-contact @(CurrentSection == "contact" ? "active" : "")">
-        Contact
+            class="nav-button-base-contact nav-button-contact @(CurrentSection == "contact" ? "active" : "")">
+        
         @if (CurrentSection == "contact")
         {
-            <img src="/images/buttonisactive.gif" alt="Active" class="active-indicator" />
+            <img src="/images/Emergency.gif" alt="Active" class="active-indicator-contact" />
         }
     </button>
-</div>
+}
+
+    </div>
 
 @code {
     [Parameter]
@@ -144,4 +149,18 @@
         // Вызов события изменения секции
         await OnSectionChanged.InvokeAsync(section);
     }
+    
+    private bool IsHomePage()
+{
+    // Получаем текущий URL
+    var currentUrl = NavigationManager.Uri;
+    
+    // Извлекаем путь из URL
+    var uri = new Uri(currentUrl);
+    var path = uri.PathAndQuery;
+    
+    // Проверяем, является ли путь главной страницей
+    // Главная страница может быть "/", или "/home", или пустой путь
+    return path == "/" || path == "/home" || string.IsNullOrEmpty(path);
+}
 }
