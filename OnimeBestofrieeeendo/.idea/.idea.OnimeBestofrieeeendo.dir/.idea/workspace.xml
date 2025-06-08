@@ -9,12 +9,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f047eb9-94c7-4c61-8d46-eb3157542f4b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Components/Services/ContactService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OnimeBestofrieeeendo.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnimeBestofrieeeendo.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Components/Pages/Home.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Components/Pages/Home.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Components/_Imports.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Components/_Imports.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/css/contact-section.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/contact-section.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -257,7 +253,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749338598978</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="added logic for formatting messages to our site, the message comes to the database with the user data that was entered">
+      <option name="closed" value="true" />
+      <created>1749391505227</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1749391505227</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -292,7 +296,8 @@
     <MESSAGE value="New popup window when a user buys something, logic added to the purchase button." />
     <MESSAGE value="test design" />
     <MESSAGE value="added a contact form" />
-    <option name="LAST_COMMIT_MESSAGE" value="added a contact form" />
+    <MESSAGE value="added logic for formatting messages to our site, the message comes to the database with the user data that was entered" />
+    <option name="LAST_COMMIT_MESSAGE" value="added logic for formatting messages to our site, the message comes to the database with the user data that was entered" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
