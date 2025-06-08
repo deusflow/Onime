@@ -4,6 +4,10 @@
 @inject IJSRuntime JsRuntime
 @inject IConfiguration Configuration
 @rendermode InteractiveServer
+@using System.ComponentModel.DataAnnotations;
+@using OnimeBestofrieeeendo.Components.Services
+@inject ContactService ContactService
+
 
 <!-- ==================== ГЛАВНАЯ СЕКЦИЯ ==================== -->
 <!-- Это типа обложка сайта, приветственная  -->
@@ -272,25 +276,27 @@
                 <div class="contact-card form-card">
                     <h3 class="card-title">Напишите нам</h3>
                     <EditForm Model="contactForm" OnValidSubmit="SubmitContactForm" class="contact-form">
+                        <DataAnnotationsValidator />
+                        <ValidationSummary />
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="name">Имя</label>
-                                <InputText id="name" class="form-control" @bind-Value="contactForm.Name" placeholder="Введите ваше имя" />
+                                <label for="name">Name</label>
+                                <InputText id="name" class="form-control" @bind-Value="contactForm.Name" placeholder="Enter your Stand...or name."/>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <InputText id="email" type="email" class="form-control" @bind-Value="contactForm.Email" placeholder="Введите ваш email" />
+                                <InputText id="email" type="email" class="form-control" @bind-Value="contactForm.Email" placeholder="Введите ваш email"/>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="subject">Тема</label>
-                            <InputText id="subject" class="form-control" @bind-Value="contactForm.Subject" placeholder="Тема сообщения" />
+                            <label for="subject">Subject</label>
+                            <InputText id="subject" class="form-control" @bind-Value="contactForm.Subject" placeholder="Тема сообщения"/>
                         </div>
                         <div class="form-group">
-                            <label for="message">Сообщение</label>
-                            <InputTextArea id="message" class="form-control" @bind-Value="contactForm.Message" rows="4" placeholder="Напишите ваше сообщение" />
+                            <label for="message">Message</label>
+                            <InputTextArea id="message" class="form-control" @bind-Value="contactForm.Message" rows="4" placeholder="Напишите ваше сообщение"/>
                         </div>
-                        <button type="submit" class="btn-submit">Отправить</button>
+                        <button type="submit" class="btn-submit">Send</button>
                     </EditForm>
                 </div>
             </div>
@@ -313,21 +319,35 @@
     
     private async Task SubmitContactForm()
     {
-        // Здесь будет логика отправки формы
-        // Например, сохранение в базу данных или отправка по email
-        
-        // Показываем уведомление
-        await JsRuntime.InvokeVoidAsync("showFunnyPopup", "Спасибо!", "Ваше сообщение отправлено. Мы свяжемся с вами в ближайшее время, но помни что мой СТАНД \"The World\".");
-        
-        // Сбрасываем форму
-        contactForm = new ContactFormModel();
+        try
+        {
+            await ContactService.SaveContactAsync(contactForm);
+
+            await JsRuntime.InvokeVoidAsync("showFunnyPopup", "Thank you!", "Your message has been sent. We will contact you soon, but remember — my STAND is \"The World\".");
+
+            contactForm = new ContactFormModel();
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            await JsRuntime.InvokeVoidAsync("showFunnyPopup", "Error", "Something went wrong. Please try again later.");
+            Console.WriteLine(ex.Message);
+        }
     }
     
     public class ContactFormModel
     {
+        [Required(ErrorMessage = "Haha, are you ashamed to enter your name? Come on, show me your stand!")]
         public string Name { get; set; } = "";
+        
+        [Required(ErrorMessage = "Email! Give me your email!!!")]
+        [EmailAddress(ErrorMessage = "Invalid email format")]
         public string Email { get; set; } = "";
+        
+        [Required(ErrorMessage = "Subject is required, bro!")]
         public string Subject { get; set; } = "";
+        
+        [Required(ErrorMessage = "Is that all you can do? Just say what you really want — write your own text already!")]
         public string Message { get; set; } = "";
     }
 
