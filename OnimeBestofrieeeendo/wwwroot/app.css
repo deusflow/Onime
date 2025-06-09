@@ -37,21 +37,6 @@ h1, h2, h3 {
     margin-bottom: 16px;
 }
 
-.btn, .btn-primary {
-    background: #ff4b2b;
-    color: #fff;
-    border: none;
-    padding: 12px 32px;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: background 0.2s;
-    margin: 8px 0;
-}
-.btn-primary:hover {
-    background: #ff6f4d;
-}
-
 /* === Hero Section === */
 .hero-content {
     display: flex;
