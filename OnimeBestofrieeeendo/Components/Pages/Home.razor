@@ -7,6 +7,7 @@
 @using System.ComponentModel.DataAnnotations;
 @using OnimeBestofrieeeendo.Components.Services
 @inject ContactService ContactService
+@using OnimeBestofrieeeendo.Models;
 
 
 <!-- ==================== ГЛАВНАЯ СЕКЦИЯ ==================== -->
@@ -35,14 +36,28 @@
 <!-- ==================== СЕКЦИЯ ТОВАРОВ ==================== -->
 
 <section id="products" class="section">
+    
     <div class="container-full">
+        <!-- Панель сортировки -->
+        <div class="sorting-panel mb-4 flex items-center space-x-2">
+            <select id="sortSelect" @onchange="OnSortChanged" class="border rounded p-1">
+                <option value="None">Без сортировки</option>
+                <option value="PriceAsc">Цена ↑</option>
+                <option value="PriceDesc">Цена ↓</option>
+                <option value="NameAsc">Название A → Z</option>
+                <option value="NameDesc">Название Z → A</option>
+                <option value="RarityAsc">Редкость ↑</option>
+                <option value="RarityDesc">Редкость ↓</option>
+            </select>
+        </div>
+
         <div class="products-wrapper">
             <div class="products-grid">
                 @foreach (var product in _shopProducts)
                 {
                     <div class="product-card">
                         <div class="product-image-wrapper">
-                            <img src="@product.ImageUrl" alt="@product.Name" />
+                            <img src="@product.ImageUrl" alt="@product.Name"/>
                         </div>
                         <div class="product-info">
                             <h3 class="product-title">@product.Name</h3>
@@ -101,6 +116,7 @@
 <!-- ==================== СЕКЦИЯ ПРОФИЛЯ ==================== -->
 <!-- Это твоя страничка, где вся инфа про тебя -->
 <section id="profile" class="section profile-section">
+    
     <div class="container">
         <h2>Min Profil</h2>
 
@@ -109,7 +125,7 @@
             <div class="profile-container">
                 <div class="profile-avatar">
                     <!-- Показываем твою фотку или дефолтную, если фотки нет -->
-                    <img src="@GetAvatarUrl(_currentUserProfile)" alt="@_currentUserProfile.Username" />
+                    <img src="@GetAvatarUrl(_currentUserProfile)" alt="@_currentUserProfile.Username"/>
                     <div class="profile-level">
                         <span>LVL @_currentUserProfile.Level</span>
                     </div>
@@ -510,7 +526,7 @@
                    products.image_url,
                    products.description,
                    shop_items.price,
-                   shop_items.quantity
+                   shop_items.quantity, shop_items.rarity
             FROM shop_items
             JOIN products ON shop_items.item_id = products.id
             WHERE shop_items.available = true";
@@ -524,7 +540,8 @@
             ImageUrl = reader.GetString(3),
             Description = reader.GetString(4),
             Price = reader.GetDecimal(5),
-            Quantity = reader.GetInt32(6)
+            Quantity = reader.GetInt32(6),
+            Rarity = reader.GetString(7)
         });
     }
 
@@ -581,31 +598,59 @@
     {
         _selectedProduct = null;
     }
-
-    // ==================== КЛАССЫ ДЛЯ ДАННЫХ ====================
-    // Профиль юзера
-    public class UserProfile
+    
+    
+    private enum SortOption
     {
-        public int Id { get; set; }
-        public string Username { get; set; } = "";
-        public string Email { get; set; } = "";
-        public DateTime JoinDate { get; set; }
-        public decimal Balance { get; set; }
-        public string Role { get; set; } = "";
-        public string? AvatarUrl { get; set; }
-        public int Level { get; set; }
-        public string? Bio { get; set; }
+        None,
+        PriceAsc,
+        PriceDesc,
+        NameAsc,
+        NameDesc,
+        RarityAsc,  // по возрастанию «редкости» (зависит от порядка в enum или маппинга)
+        RarityDesc
     }
 
-    // Шмотка из магаза
-    public class ShopProductView
+    private SortOption _currentSort = SortOption.None;
+    
+    private void ApplySorting()
     {
-        public int ShopItemId { get; set; }
-        public int ItemId { get; set; }
-        public string Name { get; set; } = "";
-        public string ImageUrl { get; set; } = "";
-        public string Description { get; set; } = "";
-        public decimal Price { get; set; }
-        public int Quantity { get; set; }
+        _shopProducts = _currentSort switch
+        {
+            SortOption.PriceAsc  => _shopProducts.OrderBy(p => p.Price).ToList(),
+            SortOption.PriceDesc => _shopProducts.OrderByDescending(p => p.Price).ToList(),
+
+            SortOption.NameAsc   => _shopProducts.OrderBy(p => p.Name).ToList(),
+            SortOption.NameDesc  => _shopProducts.OrderByDescending(p => p.Name).ToList(),
+
+            // Для редкости нам нужен порядок: Common < Rare < Epic < Legendary
+            SortOption.RarityAsc => _shopProducts
+                .OrderBy(p => RarityRank(p.Rarity)).ToList(),
+            SortOption.RarityDesc => _shopProducts
+                .OrderByDescending(p => RarityRank(p.Rarity)).ToList(),
+
+            _ => _shopProducts
+        };
     }
+
+// Помощник: присваиваем каждой строке числовой вес
+    private int RarityRank(string rarity) => rarity switch
+    {
+        "Common"    => 0,
+        "Uncommon"  => 1,
+        "Rare"      => 2,
+        "Epic"      => 3,
+        "Legendary" => 4,
+        _           => 0
+    };
+
+    private void OnSortChanged(ChangeEventArgs e)
+    {
+        if (Enum.TryParse<SortOption>(e.Value?.ToString(), out var opt))
+        {
+            _currentSort = opt;
+            ApplySorting();
+        }
+    }
+
 }

@@ -31,12 +31,6 @@ body {
     padding: 0 20px;
 }
 
-.container-full {
-    width: 100vw;
-    margin-left: 50%;
-    transform: translateX(-50%);
-    padding: 0;
-}
 
 h1, h2, h3 {
     font-weight: 700;
@@ -71,91 +65,6 @@ h1, h2, h3 {
     font-size: 3rem;
     margin-bottom: 12px;
 }
-
-/* === Products Section === */
-.products-wrapper {
-    overflow-x: hidden;  /* Меняем на hidden */
-    scroll-behavior: smooth;
-    padding-bottom: 16px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-.products-wrapper:has(.scroll-enabled) {
-    pointer-events: auto; /* allow pointer events if a special class is set */
-}
-.products-grid {
-    display: flex;
-    flex-direction: row;
-    gap: 32px;
-    min-width: 100vw;
-    padding: 24px 40px;
-    box-sizing: border-box;
-}
-.product-card {
-    background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-    min-width: 260px;
-    max-width: 260px;
-    flex: 0 0 260px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 18px 12px 20px 12px;
-    transition: transform 0.2s, box-shadow 0.2s;
-    position: relative;
-}
-.product-card:hover {
-    transform: translateY(-6px) scale(1.03);
-    box-shadow: 0 6px 24px rgba(0,0,0,0.13);
-}
-.product-image-wrapper {
-    width: 180px;
-    height: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 12px;
-    background: #f0f0f5;
-    border-radius: 12px;
-    overflow: hidden;
-}
-.product-image-wrapper img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-}
-.product-title {
-    font-size: 1.2rem;
-    margin-bottom: 6px;
-}
-.product-price {
-    font-weight: 600;
-    color: #ff4b2b;
-    margin-bottom: 10px;
-    display: block;
-}
-.product-actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 8px;
-}
-.btn-add-cart, .btn-read-more {
-    background: #ff4b2b;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    padding: 8px 16px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-.btn-add-cart:hover, .btn-read-more:hover {
-    background: #ff6f4d;
-}
-
 /* === Modal Popup === */
 .modal-overlay {
     position: fixed;

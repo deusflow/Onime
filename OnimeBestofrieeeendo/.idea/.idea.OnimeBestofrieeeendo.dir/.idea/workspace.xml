@@ -11,6 +11,11 @@
     <list default="true" id="0f047eb9-94c7-4c61-8d46-eb3157542f4b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OnimeBestofrieeeendo.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnimeBestofrieeeendo.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Components/Pages/Home.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Components/Pages/Home.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/ShopProductView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/ShopProductView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wwwroot/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wwwroot/css/product-cards.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wwwroot/css/profile-section.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/profile-section.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wwwroot/css/shopcell.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/shopcell.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,8 +57,7 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///AIAssistantSnippet.." root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///AIAssistantSnippet.." root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/deuswork/Documents/Programmering/Otaku/OnimeBestofrieeeendo/OnimeBestofrieeeendo/Components/Pages/Home.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bf9021a960b74107a7e141aa06bc9d8a0a53c929178c2fb95b1597be8af8dc/ExceptionDispatchInfo.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -83,7 +87,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.codeium.AppSettingsConfigurable&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.github.copilot.settings.ApplicationConfigurable&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -132,6 +136,7 @@
       <workItem from="1749063467477" duration="17994000" />
       <workItem from="1749152983787" duration="31026000" />
       <workItem from="1749314612835" duration="4015000" />
+      <workItem from="1749488793784" duration="1892000" />
     </task>
     <task id="LOCAL-00001" summary="New vers">
       <option name="closed" value="true" />
@@ -274,7 +279,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="test" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
