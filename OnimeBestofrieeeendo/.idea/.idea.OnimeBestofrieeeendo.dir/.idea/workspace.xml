@@ -10,9 +10,13 @@
   <component name="ChangeListManager">
     <list default="true" id="0f047eb9-94c7-4c61-8d46-eb3157542f4b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OnimeBestofrieeeendo.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnimeBestofrieeeendo.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Components/Pages/Home.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Components/Pages/Home.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wwwroot/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wwwroot/css/contact-section.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/contact-section.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wwwroot/css/modalpopup.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/modalpopup.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wwwroot/css/nav-menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/nav-menu.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/css/profile-nav.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wwwroot/css/profile-section.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/profile-section.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wwwroot/css/shopcell.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/shopcell.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +138,7 @@
       <workItem from="1749152983787" duration="31026000" />
       <workItem from="1749314612835" duration="4015000" />
       <workItem from="1749488793784" duration="2227000" />
-      <workItem from="1749491460641" duration="975000" />
+      <workItem from="1749491460641" duration="10494000" />
     </task>
     <task id="LOCAL-00001" summary="New vers">
       <option name="closed" value="true" />
@@ -272,7 +276,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749491011786</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="cleaned styles">
+      <option name="closed" value="true" />
+      <created>1749492455404</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1749492455404</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -321,7 +333,8 @@
     <MESSAGE value="added a contact form" />
     <MESSAGE value="added logic for formatting messages to our site, the message comes to the database with the user data that was entered" />
     <MESSAGE value="rework of shop section" />
-    <option name="LAST_COMMIT_MESSAGE" value="rework of shop section" />
+    <MESSAGE value="cleaned styles" />
+    <option name="LAST_COMMIT_MESSAGE" value="cleaned styles" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

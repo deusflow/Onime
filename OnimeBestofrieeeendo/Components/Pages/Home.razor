@@ -307,11 +307,11 @@
                         </div>
                         <div class="form-group">
                             <label for="subject">Subject</label>
-                            <InputText id="subject" class="form-control" @bind-Value="contactForm.Subject" placeholder="Subject?Do it."/>
+                            <InputText id="subject" class="form-control" @bind-Value="contactForm.Subject" placeholder="Subject?Do it."/>  
                         </div>
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <InputTextArea id="message" class="form-control" @bind-Value="contactForm.Message" rows="4" placeholder="Enter your message"/>
+                            <textarea id="message" class="form-control" rows="4" placeholder="Enter your message" @bind="contactForm.Message" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off"></textarea>
                         </div>
                         <button type="submit" class="btn-submit">Send</button>
                     </EditForm>

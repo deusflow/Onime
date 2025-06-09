@@ -41,7 +41,7 @@
     margin-bottom: 15px;
     color: #59CCCC;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 2px; /* Это может влиять на наследование */
 }
 
 .header-line {
@@ -64,6 +64,7 @@
 
 /* Стилизация карточек */
 .contact-card {
+    letter-spacing: normal;
     background: rgba(30, 30, 30, 0.85);
     border-radius: 20px;
     padding: 0;
@@ -286,6 +287,11 @@
 .form-card {
     max-width: 700px;
     margin: 0px auto;
+    letter-spacing: normal; /* Сбрасываем наследование */
+}
+
+.form-card * {
+    letter-spacing: normal !important;
 }
 
 .contact-form {
@@ -326,6 +332,11 @@
     color: white;
     font-size: 1rem;
     transition: all 0.3s ease;
+    /* Добавляем эти строки для исправления пробелов */
+    letter-spacing: normal !important;
+    word-spacing: normal !important;
+    white-space: normal !important;
+    font-family: inherit;
 }
 
 .form-control:focus {
@@ -407,3 +418,20 @@ textarea.form-control {
     animation: glitch 1s linear infinite;
 }
 
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    letter-spacing: 0 !important;
+    word-spacing: 0 !important;
+    white-space: normal !important;
+}
+
+/* Принудительное исправление проблемы с пробелами */
+.blazor-input,
+input.form-control,
+textarea.form-control {
+    letter-spacing: 0 !important;
+    word-spacing: 0 !important;
+    font-kerning: auto !important;
+    text-rendering: auto !important;
+}

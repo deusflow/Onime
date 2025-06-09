@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, { passive: false });
 
     document.addEventListener('keydown', function(e) {
-        if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', 'Space'].includes(e.code)) {
+        if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End'].includes(e.code)) {
             e.preventDefault();
         }
     }, { passive: false });
