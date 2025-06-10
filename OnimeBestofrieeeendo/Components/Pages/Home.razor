@@ -4,8 +4,6 @@
 @inject IConfiguration Configuration
 @rendermode InteractiveServer
 @using System.ComponentModel.DataAnnotations;
-@using OnimeBestofrieeeendo.Models
-@using OnimeBestofrieeeendo.Components.Services
 @inject ContactService ContactService
 
 
@@ -28,7 +26,7 @@
             
             <!-- Правая группа -->
             <div class="particle-group group-right">
-                <div class="particle size-xl kanji wave-1 delay-2" style="top: 0%; right: 15%;">魂</div>
+                <div class="particle size-xl kanji wave-1 delay-2" style="top: 0; right: 15%;">魂</div>
                 <div class="particle size-medium hiragana wave-3 delay-1" style="top: 30%; right: 5%;">の</div>
                 <div class="particle size-large katakana wave-2 delay-4" style="top: 45%; right: 20%;">ノ</div>
                 <div class="particle size-medium kanji wave-1 delay-3" style="top: 60%; right: 10%;">心</div>
@@ -89,7 +87,7 @@
             
             <!-- Правая группа -->
             <div class="particle-group group-right">
-                <div class="particle size-xl kanji wave-1 delay-2" style="top: 0%; right: 15%;">魂</div>
+                <div class="particle size-xl kanji wave-1 delay-2" style="top: 0; right: 15%;">魂</div>
                 <div class="particle size-medium hiragana wave-3 delay-1" style="top: 30%; right: 5%;">の</div>
                 <div class="particle size-large katakana wave-2 delay-4" style="top: 45%; right: 20%;">ノ</div>
                 <div class="particle size-medium kanji wave-1 delay-3" style="top: 60%; right: 10%;">心</div>
@@ -320,9 +318,9 @@
                         <div class="faq-item">
                             <button class="faq-question" @onclick="() => ToggleFaq(0)">
                                 How long does delivery take?
-                                <span class="faq-icon">@(expandedFaqIndex == 0 ? "−" : "+")</span>
+                                <span class="faq-icon">@(_expandedFaqIndex == 0 ? "−" : "+")</span>
                             </button>
-                            <div class="faq-answer @(expandedFaqIndex == 0 ? "expanded" : "")">
+                            <div class="faq-answer @(_expandedFaqIndex == 0 ? "expanded" : "")">
                                 Delivery within Denmark takes 1-3 business days. International delivery - 7-14 days depending on the country.
                                 Sorry for the delay, this is because our top delivery man Satoru Gojo is not with us
                             </div>
@@ -330,27 +328,27 @@
                         <div class="faq-item">
                             <button class="faq-question" @onclick="() => ToggleFaq(1)">
                                 Is it possible to return the product?
-                                <span class="faq-icon">@(expandedFaqIndex == 1 ? "−" : "+")</span>
+                                <span class="faq-icon">@(_expandedFaqIndex == 1 ? "−" : "+")</span>
                             </button>
-                            <div class="faq-answer @(expandedFaqIndex == 1 ? "expanded" : "")">
+                            <div class="faq-answer @(_expandedFaqIndex == 1 ? "expanded" : "")">
                                 Yes, within 14 days. The item must be in perfect condition with tags. But think about it, would Jotaro have returned Mother's soul if he had lost?!
                             </div>
                         </div>
                         <div class="faq-item">
                             <button class="faq-question" @onclick="() => ToggleFaq(2)">
                                 How to determine your size?
-                                <span class="faq-icon">@(expandedFaqIndex == 2 ? "−" : "+")</span>
+                                <span class="faq-icon">@(_expandedFaqIndex == 2 ? "−" : "+")</span>
                             </button>
-                            <div class="faq-answer @(expandedFaqIndex == 2 ? "expanded" : "")">
+                            <div class="faq-answer @(_expandedFaqIndex == 2 ? "expanded" : "")">
                                 Measure yourself with a flexible tape and compare it with the size chart. If you’re unsure, choose the larger size.
                             </div>
                         </div>
                         <div class="faq-item">
                             <button class="faq-question" @onclick="() => ToggleFaq(3)">
                                 Where are your products manufactured?
-                                <span class="faq-icon">@(expandedFaqIndex == 3 ? "−" : "+")</span>
+                                <span class="faq-icon">@(_expandedFaqIndex == 3 ? "−" : "+")</span>
                             </button>
-                            <div class="faq-answer @(expandedFaqIndex == 3 ? "expanded" : "")">
+                            <div class="faq-answer @(_expandedFaqIndex == 3 ? "expanded" : "")">
                                 We work with the best factories around the world, focusing on quality and ethical production. I may have sewn something...
                             </div>
                         </div>
@@ -362,26 +360,26 @@
             <div class="contact-form-container">
                 <div class="contact-card form-card">
                     <h3 class="card-title">Speak your mind. We’re listening… maybe.</h3>
-                    <EditForm Model="contactForm" OnValidSubmit="SubmitContactForm" class="contact-form">
+                    <EditForm Model="_contactForm" OnValidSubmit="SubmitContactForm" class="contact-form">
                         <DataAnnotationsValidator/>
                         <ValidationSummary/>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <InputText id="name" class="form-control" @bind-Value="contactForm.Name" placeholder="Enter your Stand..."/>
+                                <InputText id="name" class="form-control" @bind-Value="_contactForm.Name" placeholder="Enter your Stand..."/>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <InputText id="email" type="email" class="form-control" @bind-Value="contactForm.Email" placeholder="Enter your email"/>
+                                <InputText id="email" type="email" class="form-control" @bind-Value="_contactForm.Email" placeholder="Enter your email"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="subject">Subject</label>
-                            <InputText id="subject" class="form-control" @bind-Value="contactForm.Subject" placeholder="Subject?Do it."/>
+                            <InputText id="subject" class="form-control" @bind-Value="_contactForm.Subject" placeholder="Subject?Do it."/>
                         </div>
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" class="form-control" rows="4" placeholder="Enter your message" @bind="contactForm.Message" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off"></textarea>
+                            <textarea id="message" class="form-control" rows="4" placeholder="Enter your message" @bind="_contactForm.Message" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off"></textarea>
                         </div>
                         <button type="submit" class="btn-submit">Send</button>
                     </EditForm>
@@ -395,24 +393,24 @@
 
 
 @code {
-    private int expandedFaqIndex = -1;
+    private int _expandedFaqIndex = -1;
     
-    private ContactFormModel contactForm = new ContactFormModel();
+    private ContactFormModel _contactForm = new ContactFormModel();
     
     private void ToggleFaq(int index)
     {
-        expandedFaqIndex = (expandedFaqIndex == index) ? -1 : index;
+        _expandedFaqIndex = (_expandedFaqIndex == index) ? -1 : index;
     }
     
     private async Task SubmitContactForm()
     {
         try
         {
-            await ContactService.SaveContactAsync(contactForm);
+            await ContactService.SaveContactAsync(_contactForm);
 
             await JsRuntime.InvokeVoidAsync("showFunnyPopup", "Thank you!", "Your message has been sent. We will contact you soon, but remember — my STAND is \"The World\".");
 
-            contactForm = new ContactFormModel();
+            _contactForm = new ContactFormModel();
             StateHasChanged();
         }
         catch (Exception ex)
@@ -453,20 +451,20 @@
         {
             var connString = Configuration.GetConnectionString("DefaultConnection");
 
-            using var conn = new NpgsqlConnection(connString);
+            await using var conn = new NpgsqlConnection(connString);
             await conn.OpenAsync();
-
-            using var transaction = await conn.BeginTransactionAsync();
+            
+            await using var transaction = await conn.BeginTransactionAsync();
 
             // Обновляем баланс
-            using var cmdUpdateUser = new NpgsqlCommand(
+            await using var cmdUpdateUser = new NpgsqlCommand(
                 "UPDATE users SET balance = balance - @price WHERE id = @userId", conn, transaction);
             cmdUpdateUser.Parameters.AddWithValue("@price", product.Price);
             cmdUpdateUser.Parameters.AddWithValue("@userId", _currentUserProfile.Id);
             await cmdUpdateUser.ExecuteNonQueryAsync();
 
             // Уменьшаем количество товара
-            using var cmdUpdateProduct = new NpgsqlCommand(
+            await using var cmdUpdateProduct = new NpgsqlCommand(
                 "UPDATE shop_items SET quantity = quantity - 1 WHERE shop_item_id = @shopItemId", conn, transaction);
             cmdUpdateProduct.Parameters.AddWithValue("@shopItemId", product.ShopItemId);
             await cmdUpdateProduct.ExecuteNonQueryAsync();
@@ -492,19 +490,13 @@
     // Все профили юзеров
     private List<UserProfile> _profiles = new();
     // Айдишка текущего юзера, пока просто 1
-    private int _currentUserId = 1;
+    private readonly int _currentUserId = 1;
     // Профиль того, кто сейчас смотрит
     private UserProfile? _currentUserProfile;
     // Шмотка, которую выбрали для поп-апа
     private ShopProductView? _selectedProduct;
 
     // ==================== ФУНКЦИИ ====================
-    // Скроллит страницу к нужному месту
-    private async Task ScrollToSection(string sectionId)
-    {
-        // Делаем пплавный скролл через JavaScript, потому что Blazor сам не умеет
-        await JsRuntime.InvokeVoidAsync("scrollToSection", sectionId);
-    }
 
     // Грузим всё, когда страница запускается
     protected override async Task OnInitializedAsync()
@@ -514,24 +506,20 @@
             // Тащим профили из базы
             _profiles = await LoadProfilesAsync();
             // Ищем наш профиль по айди
-            _currentUserProfile = _profiles.FirstOrDefault(p => p.Id == _currentUserId);
-
+            
             // Если профиля нет, делаем фейковый
-            if (_currentUserProfile == null)
+            _currentUserProfile = _profiles.FirstOrDefault(p => p.Id == _currentUserId) ?? new UserProfile
             {
-                _currentUserProfile = new UserProfile
-                {
-                    Id = 15,
-                    Username = "Демо Чел",
-                    Email = "demo@example.com",
-                    JoinDate = DateTime.Now.AddDays(-100),
-                    Balance = 10000,
-                    Role = "Демо",
-                    AvatarUrl = "/images/default-avatar.jpg",
-                    Level = 100,
-                    Bio = "Это демка, база не сработала"
-                };
-            }
+                Id = 15,
+                Username = "Демо Чел",
+                Email = "demo@example.com",
+                JoinDate = DateTime.Now.AddDays(-100),
+                Balance = 10000,
+                Role = "DEMO",
+                AvatarUrl = "/images/default-avatar.jpg",
+                Level = 100,
+                Bio = "DEMO - ALLARM - DB IS NOR WORKING, PLEASE CONTACT ADMINISTRATOR"
+            };
         }
         catch (Exception ex)
         {
@@ -565,12 +553,12 @@
         try
         {
             // Соединяемся с базой
-            using var conn = new NpgsqlConnection(connString);
+            await using var conn = new NpgsqlConnection(connString);
             await conn.OpenAsync();
             // Кидаем запрос
-            using var cmd = new NpgsqlCommand(sql, conn);
+            await using var cmd = new NpgsqlCommand(sql, conn);
             // Читаем ответ
-            using var reader = await cmd.ExecuteReaderAsync();
+            await using var reader = await cmd.ExecuteReaderAsync();
             // Каждую строчку превращаем в штуку
             while (await reader.ReadAsync())
             {
@@ -651,10 +639,10 @@
 
         // Делаем путь нормальным
         var avatarPath = profile.AvatarUrl.StartsWith("/") ? profile.AvatarUrl : "/" + profile.AvatarUrl;
-        var fullPath = System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot", avatarPath.TrimStart('/'));
-
+        var fullPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", avatarPath.TrimStart('/'));
+        
         // Если файл есть, показываем его, иначе дефолт
-        return System.IO.File.Exists(fullPath) ? avatarPath : "/images/default-avatar.jpg";
+        return File.Exists(fullPath) ? avatarPath : "/images/default-avatar.jpg";
     }
 
     // Показываем поп-ап с инфой про шмотку

@@ -10,14 +10,9 @@
   <component name="ChangeListManager">
     <list default="true" id="0f047eb9-94c7-4c61-8d46-eb3157542f4b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OnimeBestofrieeeendo.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnimeBestofrieeeendo.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Components/App.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Components/App.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Components/Layout/MainLayout.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Components/Layout/MainLayout.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Components/Layout/NavMenu.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Components/Layout/NavMenu.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Components/Pages/Home.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Components/Pages/Home.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Components/_Imports.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Components/_Imports.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/css/logo.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/logo.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/css/nav-menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/nav-menu.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/css/shopcell.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/shopcell.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +54,10 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Users/deuswork/Documents/Programmering/Otaku/OnimeBestofrieeeendo/OnimeBestofrieeeendo/Components/App.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/deuswork/Documents/Programmering/Otaku/OnimeBestofrieeeendo/OnimeBestofrieeeendo/Components/Layout/NavMenu.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="mock:///Users/deuswork/Documents/Programmering/Otaku/OnimeBestofrieeeendo/OnimeBestofrieeeendo/Components/Pages/Home.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/deuswork/Documents/Programmering/Otaku/OnimeBestofrieeeendo/OnimeBestofrieeeendo/Components/_Imports.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bf9021a960b74107a7e141aa06bc9d8a0a53c929178c2fb95b1597be8af8dc/ExceptionDispatchInfo.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -145,7 +143,7 @@
       <workItem from="1749152983787" duration="31026000" />
       <workItem from="1749314612835" duration="4015000" />
       <workItem from="1749488793784" duration="2227000" />
-      <workItem from="1749491460641" duration="23019000" />
+      <workItem from="1749491460641" duration="27865000" />
     </task>
     <task id="LOCAL-00001" summary="New vers">
       <option name="closed" value="true" />
@@ -299,7 +297,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749505950484</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Added kanji, added style, corrected the logic of working out the text input in the form.">
+      <option name="closed" value="true" />
+      <created>1749581971182</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1749581971182</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -350,7 +356,8 @@
     <MESSAGE value="rework of shop section" />
     <MESSAGE value="cleaned styles" />
     <MESSAGE value="A bug preventing the space bar from working correctly in the message sending form has been removed." />
-    <option name="LAST_COMMIT_MESSAGE" value="A bug preventing the space bar from working correctly in the message sending form has been removed." />
+    <MESSAGE value="Added kanji, added style, corrected the logic of working out the text input in the form." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added kanji, added style, corrected the logic of working out the text input in the form." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,6 +1,6 @@
 @inherits LayoutComponentBase
 @implements IDisposable
-@inject IJSRuntime JSRuntime
+@inject IJSRuntime JsRuntime
 
 <div class="page">
     <NavMenu CurrentSection="@CurrentSection" />
@@ -17,12 +17,12 @@
 
 @code {
     public string CurrentSection { get; private set; } = "home";
-    private DotNetObjectReference<MainLayout>? dotNetHelperRef;
+    private DotNetObjectReference<MainLayout>? _dotNetHelperRef;
 
     protected override void OnInitialized()
     {
         Console.WriteLine("[MainLayout OnInitialized] MainLayout is initializing.");
-        JSRuntime.InvokeVoidAsync("blazorLog", "[MainLayout OnInitialized] MainLayout is initializing.");
+        JsRuntime.InvokeVoidAsync("blazorLog", "[MainLayout OnInitialized] MainLayout is initializing.");
         base.OnInitialized();
     }
 
@@ -31,34 +31,34 @@
     {
         if (firstRender)
         {
-            await JSRuntime.InvokeVoidAsync("blazorLog", "[MainLayout OnAfterRenderAsync] First render. Creating dotNetHelperRef.");
-            dotNetHelperRef = DotNetObjectReference.Create(this);
-            if (dotNetHelperRef == null)
+            await JsRuntime.InvokeVoidAsync("blazorLog", "[MainLayout OnAfterRenderAsync] First render. Creating dotNetHelperRef.");
+            _dotNetHelperRef = DotNetObjectReference.Create(this);
+            if (_dotNetHelperRef == null)
             {
-                await JSRuntime.InvokeVoidAsync("blazorLog", "[MainLayout OnAfterRenderAsync] CRITICAL: dotNetHelperRef is NULL after creation!");
+                await JsRuntime.InvokeVoidAsync("blazorLog", "[MainLayout OnAfterRenderAsync] CRITICAL: dotNetHelperRef is NULL after creation!");
             } else {
-                await JSRuntime.InvokeVoidAsync("blazorLog", "[MainLayout OnAfterRenderAsync] dotNetHelperRef created successfully.");
+                await JsRuntime.InvokeVoidAsync("blazorLog", "[MainLayout OnAfterRenderAsync] dotNetHelperRef created successfully.");
             }
             
             try
             {
-                await JSRuntime.InvokeVoidAsync("blazorLog", "[MainLayout OnAfterRenderAsync] Attempting to call JS initializeSwipeNavigation...");
-                await JSRuntime.InvokeVoidAsync("initializeSwipeNavigation", dotNetHelperRef);
-                await JSRuntime.InvokeVoidAsync("blazorLog", "[MainLayout OnAfterRenderAsync] JS initializeSwipeNavigation call completed.");
+                await JsRuntime.InvokeVoidAsync("blazorLog", "[MainLayout OnAfterRenderAsync] Attempting to call JS initializeSwipeNavigation...");
+                await JsRuntime.InvokeVoidAsync("initializeSwipeNavigation", _dotNetHelperRef);
+                await JsRuntime.InvokeVoidAsync("blazorLog", "[MainLayout OnAfterRenderAsync] JS initializeSwipeNavigation call completed.");
                 
                 // Обновим активную секцию при первом рендере для синхронизации
-                await JSRuntime.InvokeVoidAsync("blazorLog", "[MainLayout OnAfterRenderAsync] Setting initial active section to: " + CurrentSection);
-                await JSRuntime.InvokeVoidAsync("updateActiveSection", CurrentSection);
-                await JSRuntime.InvokeVoidAsync("blazorLog", "[MainLayout OnAfterRenderAsync] Initialization completed successfully.");
+                await JsRuntime.InvokeVoidAsync("blazorLog", "[MainLayout OnAfterRenderAsync] Setting initial active section to: " + CurrentSection);
+                await JsRuntime.InvokeVoidAsync("updateActiveSection", CurrentSection);
+                await JsRuntime.InvokeVoidAsync("blazorLog", "[MainLayout OnAfterRenderAsync] Initialization completed successfully.");
             }
             catch (Exception ex)
             {
-                await JSRuntime.InvokeVoidAsync("blazorLog", $"[MainLayout OnAfterRenderAsync] CRITICAL: Error calling JS: {ex.Message}");
+                await JsRuntime.InvokeVoidAsync("blazorLog", $"[MainLayout OnAfterRenderAsync] CRITICAL: Error calling JS: {ex.Message}");
             }
             
             // Дополнительно запустим обновление через пару секунд, чтобы убедиться в синхронизации
             await Task.Delay(500);
-            await JSRuntime.InvokeVoidAsync("blazorLog", "[MainLayout OnAfterRenderAsync] Delayed initialization triggered.");
+            await JsRuntime.InvokeVoidAsync("blazorLog", "[MainLayout OnAfterRenderAsync] Delayed initialization triggered.");
             StateHasChanged();
         }
     }
@@ -66,23 +66,23 @@
     [JSInvokable]
     public async Task UpdateActiveSection(string sectionId)
     {
-        await JSRuntime.InvokeVoidAsync("blazorLog", $"[MainLayout UpdateActiveSection] Called with sectionId: {sectionId}. Current: {CurrentSection}");
+        await JsRuntime.InvokeVoidAsync("blazorLog", $"[MainLayout UpdateActiveSection] Called with sectionId: {sectionId}. Current: {CurrentSection}");
         if (CurrentSection != sectionId)
         {
             CurrentSection = sectionId;
-            await JSRuntime.InvokeVoidAsync("blazorLog", $"[MainLayout UpdateActiveSection] CurrentSection updated to: {CurrentSection}. Invoking StateHasChanged.");
+            await JsRuntime.InvokeVoidAsync("blazorLog", $"[MainLayout UpdateActiveSection] CurrentSection updated to: {CurrentSection}. Invoking StateHasChanged.");
             await InvokeAsync(StateHasChanged); // Убедитесь, что UI обновляется
-            await JSRuntime.InvokeVoidAsync("blazorLog", $"[MainLayout UpdateActiveSection] Section updated successfully.");
+            await JsRuntime.InvokeVoidAsync("blazorLog", $"[MainLayout UpdateActiveSection] Section updated successfully.");
         }
         else
         {
-            await JSRuntime.InvokeVoidAsync("blazorLog", $"[MainLayout UpdateActiveSection] sectionId {sectionId} is already active. No UI update needed.");
+            await JsRuntime.InvokeVoidAsync("blazorLog", $"[MainLayout UpdateActiveSection] sectionId {sectionId} is already active. No UI update needed.");
         }
     }
 
     public void Dispose()
     {
         Console.WriteLine("[MainLayout Dispose] Disposing dotNetHelperRef.");
-        dotNetHelperRef?.Dispose();
+        _dotNetHelperRef?.Dispose();
     }
 }

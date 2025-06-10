@@ -1,5 +1,5 @@
 @using Microsoft.JSInterop
-@inject IJSRuntime JSRuntime
+@inject IJSRuntime JsRuntime
 @rendermode InteractiveServer
 @using OnimeBestofrieeeendo.Models
 @using System.Data
@@ -78,7 +78,7 @@
     public EventCallback<string> OnSectionChanged { get; set; }
     
     private string AvatarPath { get; set; } = "/images/default-avatar.svg";
-    private UserProfile? currentUser;
+    private UserProfile? _currentUser;
 
     protected override async Task OnInitializedAsync()
     {
@@ -95,12 +95,12 @@
             {
                 // Для демонстрации берем первый профиль из списка
                 // В реальном приложении нужно использовать механизм аутентификации
-                currentUser = profiles[0];
+                _currentUser = profiles[0];
                 
                 // Устанавливаем аватар, если он есть
-                if (!string.IsNullOrEmpty(currentUser.AvatarUrl))
+                if (!string.IsNullOrEmpty(_currentUser.AvatarUrl))
                 {
-                    AvatarPath = currentUser.AvatarUrl;
+                    AvatarPath = _currentUser.AvatarUrl;
                 }
                 else
                 {
@@ -156,7 +156,7 @@
         CurrentSection = section;
         
         // Прокрутка к секции
-        await JSRuntime.InvokeVoidAsync("scrollToSection", section);
+        await JsRuntime.InvokeVoidAsync("scrollToSection", section);
         
         // Вызов события изменения секции
         await OnSectionChanged.InvokeAsync(section);

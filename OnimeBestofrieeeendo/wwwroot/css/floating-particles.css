@@ -1,0 +1,408 @@
+/* === Floating Anime Particles Animation === */
+.floating-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.particle {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Noto Sans JP', 'Yu Gothic', 'Hiragino Sans', sans-serif;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.6),
+        0 0 20px rgba(255, 255, 255, 0.4),
+        0 0 30px rgba(255, 255, 255, 0.2);
+    animation: float-and-breathe 6s ease-in-out infinite;
+    filter: blur(0.1px);
+    font-weight: 400;
+    user-select: none;
+}
+
+/* Разные размеры частиц */
+.particle.size-small {
+    font-size: 14px;
+    animation-duration: 5s;
+}
+
+.particle.size-medium {
+    font-size: 18px;
+    animation-duration: 7s;
+}
+
+.particle.size-large {
+    font-size: 22px;
+    animation-duration: 9s;
+}
+
+.particle.size-xl {
+    font-size: 26px;
+    animation-duration: 11s;
+}
+
+/* Основная анимация дыхания и плавания */
+@keyframes float-and-breathe {
+    0%, 100% {
+        transform: translateY(0px) scale(1) rotate(0deg);
+        opacity: 0.8;
+        filter: blur(0.1px);
+    }
+    25% {
+        transform: translateY(-12px) scale(1.05) rotate(3deg);
+        opacity: 1;
+        filter: blur(0.05px);
+    }
+    50% {
+        transform: translateY(-6px) scale(0.98) rotate(-2deg);
+        opacity: 0.9;
+        filter: blur(0.15px);
+    }
+    75% {
+        transform: translateY(-15px) scale(1.02) rotate(5deg);
+        opacity: 0.85;
+        filter: blur(0.08px);
+    }
+}
+
+/* Волновые анимации для разных частиц */
+.particle.wave-1 {
+    animation: wave-motion-1 8s ease-in-out infinite;
+}
+
+.particle.wave-2 {
+    animation: wave-motion-2 10s ease-in-out infinite;
+}
+
+.particle.wave-3 {
+    animation: wave-motion-3 12s ease-in-out infinite;
+}
+
+@keyframes wave-motion-1 {
+    0%, 100% {
+        transform: translateX(0px) translateY(0px) scale(1) rotate(0deg);
+        opacity: 0.8;
+    }
+    25% {
+        transform: translateX(8px) translateY(-18px) scale(1.1) rotate(10deg);
+        opacity: 1;
+    }
+    50% {
+        transform: translateX(-6px) translateY(-10px) scale(0.95) rotate(-5deg);
+        opacity: 0.9;
+    }
+    75% {
+        transform: translateX(12px) translateY(-22px) scale(1.05) rotate(15deg);
+        opacity: 0.85;
+    }
+}
+
+@keyframes wave-motion-2 {
+    0%, 100% {
+        transform: translateX(0px) translateY(0px) scale(1) rotate(0deg);
+        opacity: 0.8;
+    }
+    33% {
+        transform: translateX(-12px) translateY(-20px) scale(1.08) rotate(-12deg);
+        opacity: 0.95;
+    }
+    66% {
+        transform: translateX(15px) translateY(-8px) scale(0.92) rotate(18deg);
+        opacity: 1;
+    }
+}
+
+@keyframes wave-motion-3 {
+    0%, 100% {
+        transform: translateX(0px) translateY(0px) scale(1) rotate(0deg);
+        opacity: 0.75;
+    }
+    20% {
+        transform: translateX(6px) translateY(-25px) scale(1.12) rotate(8deg);
+        opacity: 0.9;
+    }
+    40% {
+        transform: translateX(-8px) translateY(-12px) scale(1.15) rotate(-15deg);
+        opacity: 1;
+    }
+    60% {
+        transform: translateX(18px) translateY(-30px) scale(0.88) rotate(20deg);
+        opacity: 0.95;
+    }
+    80% {
+        transform: translateX(-3px) translateY(-16px) scale(1.05) rotate(-8deg);
+        opacity: 0.8;
+    }
+}
+
+/* Стили для разных типов символов */
+.particle.kanji {
+    color: rgba(255, 255, 255, 1);
+    font-weight: 500;
+    text-shadow: 
+        0 0 15px rgba(255, 255, 255, 0.8),
+        0 0 25px rgba(255, 255, 255, 0.6),
+        0 0 35px rgba(255, 255, 255, 0.4);
+}
+
+.particle.hiragana {
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 400;
+    text-shadow: 
+        0 0 12px rgba(255, 255, 255, 0.7),
+        0 0 22px rgba(255, 255, 255, 0.5),
+        0 0 32px rgba(255, 255, 255, 0.3);
+}
+
+.particle.katakana {
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 450;
+    text-shadow: 
+        0 0 12px rgba(255, 255, 255, 0.7),
+        0 0 22px rgba(255, 255, 255, 0.5),
+        0 0 32px rgba(255, 255, 255, 0.3);
+}
+
+.particle.symbol {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 300;
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.6),
+        0 0 20px rgba(255, 255, 255, 0.4),
+        0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+/* Анимация задержки для более естественного движения */
+.particle.delay-1 { animation-delay: -1s; }
+.particle.delay-2 { animation-delay: -2s; }
+.particle.delay-3 { animation-delay: -3s; }
+.particle.delay-4 { animation-delay: -4s; }
+.particle.delay-5 { animation-delay: -5s; }
+.particle.delay-6 { animation-delay: -6s; }
+
+/* Группировка частиц */
+.particle-group {
+    position: absolute;
+}
+
+.particle-group.group-left {
+    left: 5%;
+    top: 20%;
+    width: 25%;
+    height: 60%;
+}
+
+.particle-group.group-right {
+    right: 5%;
+    top: 20%;
+    width: 25%;
+    height: 60%;
+}
+
+.particle-group.group-center {
+    left: 50%;
+    top: 15%;
+    transform: translateX(-50%);
+    width: 30%;
+    height: 70%;
+}
+
+/* Responsive - на мобильных устройствах делаем частицы меньше */
+@media (max-width: 768px) {
+    .particle.size-small { font-size: 10px; }
+    .particle.size-medium { font-size: 12px; }
+    .particle.size-large { font-size: 16px; }
+    .particle.size-xl { font-size: 18px; }
+    
+    .particle-group.group-left,
+    .particle-group.group-right {
+        width: 20%;
+        height: 50%;
+    }
+    
+    .particle-group.group-center {
+        width: 25%;
+        height: 55%;
+    }
+}
+
+/* Разные размеры частиц */
+.particle.size-small {
+    width: 8px;
+    height: 8px;
+    animation-duration: 4s;
+}
+
+.particle.size-medium {
+    width: 12px;
+    height: 12px;
+    animation-duration: 6s;
+}
+
+.particle.size-large {
+    width: 16px;
+    height: 16px;
+    animation-duration: 8s;
+}
+
+.particle.size-xl {
+    width: 20px;
+    height: 20px;
+    animation-duration: 10s;
+}
+
+/* Основная анимация дыхания и плавания */
+@keyframes float-and-breathe {
+    0%, 100% {
+        transform: translateY(0px) scale(1);
+        opacity: 0.6;
+        filter: blur(0.5px);
+    }
+    25% {
+        transform: translateY(-20px) scale(1.2);
+        opacity: 0.8;
+        filter: blur(0.2px);
+    }
+    50% {
+        transform: translateY(-10px) scale(0.9);
+        opacity: 1;
+        filter: blur(0.8px);
+    }
+    75% {
+        transform: translateY(-30px) scale(1.1);
+        opacity: 0.7;
+        filter: blur(0.3px);
+    }
+}
+
+/* Волновые анимации для разных частиц */
+.particle.wave-1 {
+    animation: wave-motion-1 8s ease-in-out infinite;
+}
+
+.particle.wave-2 {
+    animation: wave-motion-2 10s ease-in-out infinite;
+}
+
+.particle.wave-3 {
+    animation: wave-motion-3 12s ease-in-out infinite;
+}
+
+@keyframes wave-motion-1 {
+    0%, 100% {
+        transform: translateX(0px) translateY(0px) scale(1);
+        opacity: 0.6;
+    }
+    25% {
+        transform: translateX(15px) translateY(-25px) scale(1.3);
+        opacity: 0.9;
+    }
+    50% {
+        transform: translateX(-10px) translateY(-15px) scale(0.8);
+        opacity: 1;
+    }
+    75% {
+        transform: translateX(20px) translateY(-35px) scale(1.1);
+        opacity: 0.7;
+    }
+}
+
+@keyframes wave-motion-2 {
+    0%, 100% {
+        transform: translateX(0px) translateY(0px) scale(1) rotate(0deg);
+        opacity: 0.5;
+    }
+    33% {
+        transform: translateX(-20px) translateY(-30px) scale(1.4) rotate(120deg);
+        opacity: 0.8;
+    }
+    66% {
+        transform: translateX(25px) translateY(-10px) scale(0.7) rotate(240deg);
+        opacity: 1;
+    }
+}
+
+@keyframes wave-motion-3 {
+    0%, 100% {
+        transform: translateX(0px) translateY(0px) scale(1);
+        opacity: 0.4;
+    }
+    20% {
+        transform: translateX(10px) translateY(-40px) scale(1.2);
+        opacity: 0.7;
+    }
+    40% {
+        transform: translateX(-15px) translateY(-20px) scale(1.5);
+        opacity: 0.9;
+    }
+    60% {
+        transform: translateX(30px) translateY(-50px) scale(0.6);
+        opacity: 1;
+    }
+    80% {
+        transform: translateX(-5px) translateY(-25px) scale(1.3);
+        opacity: 0.6;
+    }
+}
+
+/* Специальные цвета для разных частиц */
+.particle.color-purple {
+    background: radial-gradient(circle at 30% 30%, 
+        rgba(255, 255, 255, 0.9), 
+        rgba(138, 43, 226, 0.7), 
+        rgba(75, 0, 130, 0.5));
+    box-shadow: 
+        0 0 25px rgba(138, 43, 226, 0.4),
+        0 0 50px rgba(75, 0, 130, 0.2);
+}
+
+.particle.color-blue {
+    background: radial-gradient(circle at 30% 30%, 
+        rgba(255, 255, 255, 0.9), 
+        rgba(30, 144, 255, 0.7), 
+        rgba(0, 100, 200, 0.5));
+    box-shadow: 
+        0 0 25px rgba(30, 144, 255, 0.4),
+        0 0 50px rgba(0, 100, 200, 0.2);
+}
+
+.particle.color-cyan {
+    background: radial-gradient(circle at 30% 30%, 
+        rgba(255, 255, 255, 0.9), 
+        rgba(0, 255, 255, 0.7), 
+        rgba(0, 200, 200, 0.5));
+    box-shadow: 
+        0 0 25px rgba(0, 255, 255, 0.4),
+        0 0 50px rgba(0, 200, 200, 0.2);
+}
+
+.particle.color-pink {
+    background: radial-gradient(circle at 30% 30%, 
+        rgba(255, 255, 255, 0.9), 
+        rgba(255, 20, 147, 0.7), 
+        rgba(200, 0, 100, 0.5));
+    box-shadow: 
+        0 0 25px rgba(255, 20, 147, 0.4),
+        0 0 50px rgba(200, 0, 100, 0.2);
+}
+
+/* Анимация задержки для более естественного движения */
+.particle.delay-1 { animation-delay: -1s; }
+.particle.delay-2 { animation-delay: -2s; }
+.particle.delay-3 { animation-delay: -3s; }
+.particle.delay-4 { animation-delay: -4s; }
+.particle.delay-5 { animation-delay: -5s; }
+
+/* Responsive - на мобильных устройствах делаем частицы меньше */
+@media (max-width: 768px) {
+    .particle.size-small { width: 6px; height: 6px; }
+    .particle.size-medium { width: 8px; height: 8px; }
+    .particle.size-large { width: 10px; height: 10px; }
+    .particle.size-xl { width: 12px; height: 12px; }
+}
