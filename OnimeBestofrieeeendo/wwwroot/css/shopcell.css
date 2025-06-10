@@ -2,7 +2,7 @@
 #products.section {
     /* Use the same background as body, but inherit so it overlays seamlessly */
     background: inherit;
-    padding: 19px 0 24px 0; /* уменьшено на 30% */
+    padding: 15vh 0 24vb 0; /* уменьшено на 30% */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -23,22 +23,77 @@
 }
 
 .sorting-panel {
+    display: flex !important;
+    align-items: center;
     justify-content: flex-end;
-    margin-bottom: 32px;
+    margin-bottom: 12px;
+    gap: 4px;
+    position: relative;
+    z-index: 1100;
+    background: rgba(35, 39, 47, 0.9);
+    padding: 5px;
+    border-radius: 15px;
+    border: 1px solid #444;
+    width: 25%;
+    height: 4vh;
 }
 
 .sorting-panel select {
-    background: #23272f;
+    background: linear-gradient(135deg, #23272f, #2a2e37);
     color: #fff;
-    border: 1.5px solid #444;
-    border-radius: 8px;
-    padding: 8px 16px;
-    font-size: 1rem;
-    transition: border 0.2s;
+    border: 2px solid #59CCCC;
+    border-radius: 25px;
+    padding: 12px 20px;
+    transition: all 0.3s ease;
+    min-width: 180px;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2359CCCC'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 20px;
+    padding-right: 45px;
+    display: block;
+    visibility: visible;
 }
+
 .sorting-panel select:focus {
     outline: none;
-    border-color: #ff3c7e;
+    border-color: #59CCCC;
+    box-shadow: 0 0 0 3px rgba(89, 204, 204, 0.2), 0 4px 12px rgba(89, 204, 204, 0.3);
+    transform: translateY(-2px);
+}
+
+.sorting-panel select:hover {
+    border-color: #59CCCC;
+    background: linear-gradient(135deg, #2a2e37, #323740);
+    box-shadow: 0 6px 12px rgba(89, 204, 204, 0.25);
+    transform: translateY(-1px);
+}
+
+.sorting-panel select option {
+    background: #23272f;
+    color: #fff;
+    padding: 10px;
+    border: none;
+}
+
+.sorting-panel select option:hover {
+    background: #59CCCC;
+    color: #fff;
+}
+
+.sorting-panel select option:checked {
+    background: #59CCCC;
+    color: #fff;
+}
+
+/* Дополнительные стили */
+.sorting-panel select:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(89, 204, 204, 0.2);
 }
 
 .products-wrapper {
@@ -46,17 +101,19 @@
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     height: 100%;
+    position: relative;
+    z-index: 10;
+    padding: 20px;
 }
 
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(156px, 1fr)); /* 260px * 0.6 = 156px */
-    gap: 13px; /* 22px * 0.6 = 13px */
+    grid-template-columns: repeat(auto-fit, minmax(156px, 1fr)); 
+    gap: 13px; 
     align-items: center;
     justify-items: center;
-    margin-top: -28vb; /* Reduced by 20% from original 10vb to move products up */
+    margin-top: 0; 
 }
 
 .product-card {
@@ -182,6 +239,14 @@
 }
 .product-card:hover::after {
     box-shadow: 0 0 24px 4px #00eaff88;
+}
+
+/* Стиль для лейбла сортировки, если понадобится */
+.sorting-panel label {
+    color: #59CCCC;
+    font-weight: 500;
+    margin-right: 10px;
+    font-size: 1rem;
 }
 
 /* Responsive tweaks */

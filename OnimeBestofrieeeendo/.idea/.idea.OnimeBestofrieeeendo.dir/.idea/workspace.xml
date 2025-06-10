@@ -10,12 +10,13 @@
   <component name="ChangeListManager">
     <list default="true" id="0f047eb9-94c7-4c61-8d46-eb3157542f4b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OnimeBestofrieeeendo.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnimeBestofrieeeendo.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Components/App.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Components/App.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Components/Layout/NavMenu.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Components/Layout/NavMenu.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Components/Pages/Home.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Components/Pages/Home.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Components/_Imports.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Components/_Imports.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wwwroot/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/css/contact-section.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/contact-section.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/css/modalpopup.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/modalpopup.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wwwroot/css/logo.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/logo.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wwwroot/css/nav-menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/nav-menu.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/css/profile-section.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/profile-section.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wwwroot/css/shopcell.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/shopcell.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -62,6 +63,9 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bf9021a960b74107a7e141aa06bc9d8a0a53c929178c2fb95b1597be8af8dc/ExceptionDispatchInfo.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -92,6 +96,9 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RiderProblemsViewState">
+    <option name="sortByName" value="true" />
+  </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.OnimeBestofrieeeendo: http">
     <configuration name="OnimeBestofrieeeendo: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/OnimeBestofrieeeendo.csproj" />
@@ -138,7 +145,7 @@
       <workItem from="1749152983787" duration="31026000" />
       <workItem from="1749314612835" duration="4015000" />
       <workItem from="1749488793784" duration="2227000" />
-      <workItem from="1749491460641" duration="10494000" />
+      <workItem from="1749491460641" duration="23019000" />
     </task>
     <task id="LOCAL-00001" summary="New vers">
       <option name="closed" value="true" />
@@ -284,7 +291,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749492455404</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="A bug preventing the space bar from working correctly in the message sending form has been removed.">
+      <option name="closed" value="true" />
+      <created>1749505950484</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1749505950484</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -334,7 +349,8 @@
     <MESSAGE value="added logic for formatting messages to our site, the message comes to the database with the user data that was entered" />
     <MESSAGE value="rework of shop section" />
     <MESSAGE value="cleaned styles" />
-    <option name="LAST_COMMIT_MESSAGE" value="cleaned styles" />
+    <MESSAGE value="A bug preventing the space bar from working correctly in the message sending form has been removed." />
+    <option name="LAST_COMMIT_MESSAGE" value="A bug preventing the space bar from working correctly in the message sending form has been removed." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

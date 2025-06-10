@@ -56,6 +56,18 @@
     </button>
 }
 
+@if (CurrentSection == "home")
+{
+    <button @onclick='() => SetActive("products")' 
+            class="nav-button-base-shop nav-button-shop-home @(CurrentSection == "products" ? "active" : "")">
+        
+        @if (CurrentSection == "products")
+        {
+            <img src="/images/buttonisactive.gif" alt="Active" class="active-indicator-shop" />
+        }
+    </button>
+}
+
     </div>
 
 @code {

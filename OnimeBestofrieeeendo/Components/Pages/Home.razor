@@ -1,33 +1,69 @@
 @page "/"
 @using Npgsql
-@using Microsoft.AspNetCore.Components.Forms
 @inject IJSRuntime JsRuntime
 @inject IConfiguration Configuration
 @rendermode InteractiveServer
 @using System.ComponentModel.DataAnnotations;
+@using OnimeBestofrieeeendo.Models
 @using OnimeBestofrieeeendo.Components.Services
 @inject ContactService ContactService
-@using OnimeBestofrieeeendo.Models;
 
 
 <!-- ==================== ГЛАВНАЯ СЕКЦИЯ ==================== -->
-<!-- Это типа обложка сайта, приветственная  -->
+
 <section id="home" class="section">
     <div class="container">
         
+        <!-- добавил кандзи и все ониме -->
+        <div class="floating-particles">
+            
+            <!-- Левая группа -->
+            <div class="particle-group group-left">
+                <div class="particle size-large kanji wave-1 delay-1" style="top: 20%; left: 20%;">愛</div>
+                <div class="particle size-medium hiragana wave-2 delay-3" style="top: 25%; left: 5%;">あ</div>
+                <div class="particle size-small katakana wave-3 delay-2" style="top: 40%; left: 15%;">ア</div>
+                <div class="particle size-medium kanji wave-1 delay-4" style="top: 55%; left: 8%;">夢</div>
+                <div class="particle size-small symbol wave-2 delay-5" style="top: 70%; left: 18%;">☆</div>
+            </div>
+            
+            <!-- Правая группа -->
+            <div class="particle-group group-right">
+                <div class="particle size-xl kanji wave-1 delay-2" style="top: 0%; right: 15%;">魂</div>
+                <div class="particle size-medium hiragana wave-3 delay-1" style="top: 30%; right: 5%;">の</div>
+                <div class="particle size-large katakana wave-2 delay-4" style="top: 45%; right: 20%;">ノ</div>
+                <div class="particle size-medium kanji wave-1 delay-3" style="top: 60%; right: 10%;">心</div>
+                <div class="particle size-small symbol wave-3 delay-6" style="top: 75%; right: 12%;">◆</div>
+            </div>
+            
+            <!-- Центральная группа -->
+            <div class="particle-group group-center">
+                <div class="particle size-medium kanji wave-2 delay-1" style="top: 20%; left: 30%;">和</div>
+                <div class="particle size-small hiragana wave-1 delay-3" style="top: 35%; left: 60%;">を</div>
+                <div class="particle size-large symbol wave-3 delay-2" style="top: 50%; left: 10%;">◯</div>
+                <div class="particle size-medium katakana wave-2 delay-5" style="top: 65%; left: 70%;">ス</div>
+                <div class="particle size-small kanji wave-1 delay-4" style="top: 80%; left: 40%;">力</div>
+            </div>
+            
+        </div>
+        
+        <div class="hero-description">
+            <p class="lead">AnimeWorld: Be the hero.<br>
+                Rule your world.</p>
+        </div>
+        
         <div class="hero-content">
+            
             <h1 class="animated-logo">
-                <img src="/images/logo.svg" alt="The Onime World" />
+                <img src="/images/logo.svg" alt="The Onime World"/>
             </h1>
-            
-            <h2
-                class="animated-logo2">
-                <img src="/images/logo1.svg" alt="The Onime World" />
-            </h2>
 
-            <p class="lead"></p> <!-- Сюда можно вставить /привет -->
-            <button class="btn btn-primary" @onclick="@(() => ScrollToSection("products"))">ShopIt</button>
+            <h2 class="animated-logo2">
+                <img src="/images/logo1.svg" alt="The Onime World"/>
+            </h2>
             
+            <h2 class="logo3">
+                <img src="/images/japan.svg" alt="The Onime World"/>
+                </h2>
         </div>
         
     </div>
@@ -39,19 +75,51 @@
     
     <div class="container-full">
         <!-- Панель сортировки -->
-        <div class="sorting-panel mb-4 flex items-center space-x-2">
-            <select id="sortSelect" @onchange="OnSortChanged" class="border rounded p-1">
-                <option value="None">Без сортировки</option>
-                <option value="PriceAsc">Цена ↑</option>
-                <option value="PriceDesc">Цена ↓</option>
-                <option value="NameAsc">Название A → Z</option>
-                <option value="NameDesc">Название Z → A</option>
-                <option value="RarityAsc">Редкость ↑</option>
-                <option value="RarityDesc">Редкость ↓</option>
-            </select>
+<!-- добавил кандзи и все ониме -->
+        <div class="floating-particles">
+            
+            <!-- Левая группа -->
+            <div class="particle-group group-left">
+                <div class="particle size-large kanji wave-1 delay-1" style="top: 20%; left: 20%;">愛</div>
+                <div class="particle size-medium hiragana wave-2 delay-3" style="top: 25%; left: 5%;">あ</div>
+                <div class="particle size-small katakana wave-3 delay-2" style="top: 40%; left: 15%;">ア</div>
+                <div class="particle size-medium kanji wave-1 delay-4" style="top: 55%; left: 8%;">夢</div>
+                <div class="particle size-small symbol wave-2 delay-5" style="top: 70%; left: 18%;">☆</div>
+            </div>
+            
+            <!-- Правая группа -->
+            <div class="particle-group group-right">
+                <div class="particle size-xl kanji wave-1 delay-2" style="top: 0%; right: 15%;">魂</div>
+                <div class="particle size-medium hiragana wave-3 delay-1" style="top: 30%; right: 5%;">の</div>
+                <div class="particle size-large katakana wave-2 delay-4" style="top: 45%; right: 20%;">ノ</div>
+                <div class="particle size-medium kanji wave-1 delay-3" style="top: 60%; right: 10%;">心</div>
+                <div class="particle size-small symbol wave-3 delay-6" style="top: 75%; right: 12%;">◆</div>
+            </div>
+            
+            <!-- Центральная группа -->
+            <div class="particle-group group-center">
+                <div class="particle size-medium kanji wave-2 delay-1" style="top: 20%; left: 30%;">和</div>
+                <div class="particle size-small hiragana wave-1 delay-3" style="top: 35%; left: 60%;">を</div>
+                <div class="particle size-large symbol wave-3 delay-2" style="top: 50%; left: 10%;">◯</div>
+                <div class="particle size-medium katakana wave-2 delay-5" style="top: 65%; left: 70%;">ス</div>
+                <div class="particle size-small kanji wave-1 delay-4" style="top: 80%; left: 40%;">力</div>
+            </div>
+            
         </div>
-
         <div class="products-wrapper">
+            <div class="sorting-panel">
+                <label for="sortSelect">Sort by:</label>
+                <select id="sortSelect" @onchange="OnSortChanged">
+                    <option value="None">No sorting</option>
+                    <option value="PriceAsc">Price ↑</option>
+                    <option value="PriceDesc">Price ↓</option>
+                    <option value="NameAsc">Name A → Z</option>
+                    <option value="NameDesc">Name Z → A</option>
+                    <option value="RarityAsc">Rarity ↑</option>
+                    <option value="RarityDesc">Rarity ↓</option>
+                </select>
+            </div>
+            
             <div class="products-grid">
                 @foreach (var product in _shopProducts)
                 {
@@ -86,7 +154,7 @@
             <button class="close-btn" @onclick="CloseModal">X</button>
             <h3>@_selectedProduct.Name</h3>
             <p>@_selectedProduct.Description</p>
-            <p>Сколько есть: @_selectedProduct.Quantity</p>
+            <p>How much is there: @_selectedProduct.Quantity</p>
         </div>
     </div>
 }
@@ -164,6 +232,7 @@
 
 
 <!-- ==================== СЕКЦИЯ КОНТАКТЫ И О НАС ==================== -->
+
 <section id="contact" class="section contact-section">
     <div class="container">
         <div class="section-header">
@@ -288,13 +357,14 @@
                     </div>
                 </div>
             </div>
+            
             <!-- Форма обратной связи -->
             <div class="contact-form-container">
                 <div class="contact-card form-card">
                     <h3 class="card-title">Speak your mind. We’re listening… maybe.</h3>
                     <EditForm Model="contactForm" OnValidSubmit="SubmitContactForm" class="contact-form">
-                        <DataAnnotationsValidator />
-                        <ValidationSummary />
+                        <DataAnnotationsValidator/>
+                        <ValidationSummary/>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="name">Name</label>
@@ -307,7 +377,7 @@
                         </div>
                         <div class="form-group">
                             <label for="subject">Subject</label>
-                            <InputText id="subject" class="form-control" @bind-Value="contactForm.Subject" placeholder="Subject?Do it."/>  
+                            <InputText id="subject" class="form-control" @bind-Value="contactForm.Subject" placeholder="Subject?Do it."/>
                         </div>
                         <div class="form-group">
                             <label for="message">Message</label>
@@ -432,7 +502,7 @@
     // Скроллит страницу к нужному месту
     private async Task ScrollToSection(string sectionId)
     {
-        // Делаем плав��ый скролл через JavaScript, потому что Blazor сам не умеет
+        // Делаем пплавный скролл через JavaScript, потому что Blazor сам не умеет
         await JsRuntime.InvokeVoidAsync("scrollToSection", sectionId);
     }
 
