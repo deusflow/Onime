@@ -74,7 +74,7 @@
     public EventCallback<string> OnSectionChanged { get; set; }
     
     private string AvatarPath { get; set; } = "/images/default-avatar.svg";
-    private UserProfile? _currentUser;
+    
 
     protected override async Task OnInitializedAsync()
     {
@@ -85,12 +85,11 @@
     {
         try
         {
-            // Загружаем профиль пользователя через сервис
             var profiles = await UserProfileService.LoadProfilesAsync();
             if (profiles.Count > 0)
             {
-                _currentUser = profiles[0];
-                AvatarPath = UserProfileService.GetAvatarUrl(_currentUser);
+                var user = profiles[0]; // локальная переменная
+                AvatarPath = UserProfileService.GetAvatarUrl(user);
             }
             else
             {

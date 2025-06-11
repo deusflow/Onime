@@ -44,20 +44,6 @@ window.scrollToSection = (sectionId) => {
 };
 
 
-window.goToNextSection = () => {
-    if (isScrolling || sections.length === 0) return;
-    const nextIndex = (currentSectionIndex + 1) % sections.length;
-    const nextSectionId = sections[nextIndex].id;
-    window.scrollToSection(nextSectionId);
-};
-
-window.goToPrevSection = () => {
-    if (isScrolling || sections.length === 0) return;
-    const prevIndex = (currentSectionIndex - 1 + sections.length) % sections.length;
-    const prevSectionId = sections[prevIndex].id;
-    window.scrollToSection(prevSectionId);
-};
-
 // Эта функция говорит Blazor "мы перешли на другую секцию!"
 function updateActiveSection(sectionId) {
     if (dotNetHelper && typeof dotNetHelper.invokeMethodAsync === 'function') {

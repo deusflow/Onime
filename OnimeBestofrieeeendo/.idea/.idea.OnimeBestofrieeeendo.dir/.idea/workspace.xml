@@ -11,8 +11,6 @@
     <list default="true" id="0f047eb9-94c7-4c61-8d46-eb3157542f4b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OnimeBestofrieeeendo.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnimeBestofrieeeendo.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Components/Layout/NavMenu.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Components/Layout/NavMenu.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Components/Pages/Home.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Components/Pages/Home.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +53,10 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="mock:///Users/deuswork/Documents/Programmering/Otaku/OnimeBestofrieeeendo/OnimeBestofrieeeendo/Components/App.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/deuswork/Documents/Programmering/Otaku/OnimeBestofrieeeendo/OnimeBestofrieeeendo/Components/App.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="mock:///Users/deuswork/Documents/Programmering/Otaku/OnimeBestofrieeeendo/OnimeBestofrieeeendo/Components/Layout/NavMenu.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/deuswork/Documents/Programmering/Otaku/OnimeBestofrieeeendo/OnimeBestofrieeeendo/Components/Pages/Home.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/deuswork/Documents/Programmering/Otaku/OnimeBestofrieeeendo/OnimeBestofrieeeendo/Components/Pages/Home.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="mock:///Users/deuswork/Documents/Programmering/Otaku/OnimeBestofrieeeendo/OnimeBestofrieeeendo/Components/Pages/Home.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="mock:///Users/deuswork/Documents/Programmering/Otaku/OnimeBestofrieeeendo/OnimeBestofrieeeendo/Components/Pages/Home.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="mock:///Users/deuswork/Documents/Programmering/Otaku/OnimeBestofrieeeendo/OnimeBestofrieeeendo/Components/_Imports.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
@@ -314,7 +315,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749594380513</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="new service for User">
+      <option name="closed" value="true" />
+      <created>1749676684594</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1749676684594</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -367,7 +376,8 @@
     <MESSAGE value="A bug preventing the space bar from working correctly in the message sending form has been removed." />
     <MESSAGE value="Added kanji, added style, corrected the logic of working out the text input in the form." />
     <MESSAGE value="removed dead code from site.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed dead code from site.js" />
+    <MESSAGE value="new service for User" />
+    <option name="LAST_COMMIT_MESSAGE" value="new service for User" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
