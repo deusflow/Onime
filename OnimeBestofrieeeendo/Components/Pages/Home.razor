@@ -4,6 +4,7 @@
 @inject IConfiguration Configuration
 @rendermode InteractiveServer
 @using System.ComponentModel.DataAnnotations;
+@using OnimeBestofrieeeendo.Components.Shared
 @inject ContactService ContactService
 
 
@@ -12,37 +13,7 @@
 <section id="home" class="section">
     <div class="container">
         
-        <!-- добавил кандзи и все ониме -->
-        <div class="floating-particles">
-            
-            <!-- Левая группа -->
-            <div class="particle-group group-left">
-                <div class="particle size-large kanji wave-1 delay-1" style="top: 20%; left: 20%;">愛</div>
-                <div class="particle size-medium hiragana wave-2 delay-3" style="top: 25%; left: 5%;">あ</div>
-                <div class="particle size-small katakana wave-3 delay-2" style="top: 40%; left: 15%;">ア</div>
-                <div class="particle size-medium kanji wave-1 delay-4" style="top: 55%; left: 8%;">夢</div>
-                <div class="particle size-small symbol wave-2 delay-5" style="top: 70%; left: 18%;">☆</div>
-            </div>
-            
-            <!-- Правая группа -->
-            <div class="particle-group group-right">
-                <div class="particle size-xl kanji wave-1 delay-2" style="top: 0; right: 15%;">魂</div>
-                <div class="particle size-medium hiragana wave-3 delay-1" style="top: 30%; right: 5%;">の</div>
-                <div class="particle size-large katakana wave-2 delay-4" style="top: 45%; right: 20%;">ノ</div>
-                <div class="particle size-medium kanji wave-1 delay-3" style="top: 60%; right: 10%;">心</div>
-                <div class="particle size-small symbol wave-3 delay-6" style="top: 75%; right: 12%;">◆</div>
-            </div>
-            
-            <!-- Центральная группа -->
-            <div class="particle-group group-center">
-                <div class="particle size-medium kanji wave-2 delay-1" style="top: 20%; left: 30%;">和</div>
-                <div class="particle size-small hiragana wave-1 delay-3" style="top: 35%; left: 60%;">を</div>
-                <div class="particle size-large symbol wave-3 delay-2" style="top: 50%; left: 10%;">◯</div>
-                <div class="particle size-medium katakana wave-2 delay-5" style="top: 65%; left: 70%;">ス</div>
-                <div class="particle size-small kanji wave-1 delay-4" style="top: 80%; left: 40%;">力</div>
-            </div>
-            
-        </div>
+        <FloatingParticles />
         
         <div class="hero-description">
             <p class="lead">AnimeWorld: Be the hero.<br>
@@ -74,36 +45,8 @@
     <div class="container-full">
         <!-- Панель сортировки -->
 <!-- добавил кандзи и все ониме -->
-        <div class="floating-particles">
-            
-            <!-- Левая группа -->
-            <div class="particle-group group-left">
-                <div class="particle size-large kanji wave-1 delay-1" style="top: 20%; left: 20%;">愛</div>
-                <div class="particle size-medium hiragana wave-2 delay-3" style="top: 25%; left: 5%;">あ</div>
-                <div class="particle size-small katakana wave-3 delay-2" style="top: 40%; left: 15%;">ア</div>
-                <div class="particle size-medium kanji wave-1 delay-4" style="top: 55%; left: 8%;">夢</div>
-                <div class="particle size-small symbol wave-2 delay-5" style="top: 70%; left: 18%;">☆</div>
-            </div>
-            
-            <!-- Правая группа -->
-            <div class="particle-group group-right">
-                <div class="particle size-xl kanji wave-1 delay-2" style="top: 0; right: 15%;">魂</div>
-                <div class="particle size-medium hiragana wave-3 delay-1" style="top: 30%; right: 5%;">の</div>
-                <div class="particle size-large katakana wave-2 delay-4" style="top: 45%; right: 20%;">ノ</div>
-                <div class="particle size-medium kanji wave-1 delay-3" style="top: 60%; right: 10%;">心</div>
-                <div class="particle size-small symbol wave-3 delay-6" style="top: 75%; right: 12%;">◆</div>
-            </div>
-            
-            <!-- Центральная группа -->
-            <div class="particle-group group-center">
-                <div class="particle size-medium kanji wave-2 delay-1" style="top: 20%; left: 30%;">和</div>
-                <div class="particle size-small hiragana wave-1 delay-3" style="top: 35%; left: 60%;">を</div>
-                <div class="particle size-large symbol wave-3 delay-2" style="top: 50%; left: 10%;">◯</div>
-                <div class="particle size-medium katakana wave-2 delay-5" style="top: 65%; left: 70%;">ス</div>
-                <div class="particle size-small kanji wave-1 delay-4" style="top: 80%; left: 40%;">力</div>
-            </div>
-            
-        </div>
+        <FloatingParticles />  
+      
         <div class="products-wrapper">
             <div class="sorting-panel">
                 <label for="sortSelect">Sort by:</label>
@@ -223,7 +166,7 @@
         }
         else
         {
-            <p>Профиль не нашёл, сорян.</p>
+            <p>Yikes! No profile found. Try again maybe?</p>
         }
     </div>
 </section>
@@ -244,22 +187,22 @@
                 <div class="contact-card">
                     <h3 class="card-title">Our Stand</h3>
                     <div class="about-content">
-                        <p>Onime — это не просто магазин одежды, это целая вселенная стиля.</p>
-                        <p>Мы отбираем только лучшие вещи от проверенных поставщиков и создаем собственные дизайны, чтобы ты всегда выглядел неотразимо.</p>
+                        <p>Onime isn’t just fashion — it’s a universe where style comes to life.</p>
+                        <p>Only the best — handpicked from trusted suppliers and fused with our original designs to keep you looking unstoppable.</p>
                         <p class="highlight-text">Only cool clothes from trusted dudes.</p>
                     </div>
                     <div class="brand-values">
                         <div class="value-item">
                             <div class="value-icon">🚀</div>
-                            <p>Инновационный стиль</p>
+                            <p>Innovative style</p>
                         </div>
                         <div class="value-item">
                             <div class="value-icon">⚡</div>
-                            <p>Быстрая доставка</p>
+                            <p>Fast delivery</p>
                         </div>
                         <div class="value-item">
                             <div class="value-icon">💯</div>
-                            <p>Премиум качество</p>
+                            <p>Premium quality</p>
                         </div>
                     </div>
                 </div>
@@ -449,34 +392,35 @@
 
         try
         {
-            var connString = Configuration.GetConnectionString("DefaultConnection");
+            // ИСПОЛЬЗУЕМ НОВЫЕ УНИВЕРСАЛЬНЫЕ МЕТОДЫ:
+        
+            // Обновляем баланс пользователя
+            var userUpdateResult = await ExecuteNonQueryAsync(
+                "UPDATE users SET balance = balance - @price WHERE id = @userId",
+                ("@price", product.Price),
+                ("@userId", _currentUserProfile.Id)
+            );
 
-            await using var conn = new NpgsqlConnection(connString);
-            await conn.OpenAsync();
-            
-            await using var transaction = await conn.BeginTransactionAsync();
+            // Обновляем количество товара
+            var productUpdateResult = await ExecuteNonQueryAsync(
+                "UPDATE shop_items SET quantity = quantity - 1 WHERE shop_item_id = @shopItemId",
+                ("@shopItemId", product.ShopItemId)
+            );
 
-            // Обновляем баланс
-            await using var cmdUpdateUser = new NpgsqlCommand(
-                "UPDATE users SET balance = balance - @price WHERE id = @userId", conn, transaction);
-            cmdUpdateUser.Parameters.AddWithValue("@price", product.Price);
-            cmdUpdateUser.Parameters.AddWithValue("@userId", _currentUserProfile.Id);
-            await cmdUpdateUser.ExecuteNonQueryAsync();
+            // Проверяем что обновления прошли успешно
+            if (userUpdateResult > 0 && productUpdateResult > 0)
+            {
+                await JsRuntime.InvokeVoidAsync("showFunnyPopup", "Поздравляем 🎉", $"Ты купил: {product.Name}!");
 
-            // Уменьшаем количество товара
-            await using var cmdUpdateProduct = new NpgsqlCommand(
-                "UPDATE shop_items SET quantity = quantity - 1 WHERE shop_item_id = @shopItemId", conn, transaction);
-            cmdUpdateProduct.Parameters.AddWithValue("@shopItemId", product.ShopItemId);
-            await cmdUpdateProduct.ExecuteNonQueryAsync();
-
-            await transaction.CommitAsync();
-
-            await JsRuntime.InvokeVoidAsync("showFunnyPopup", "Поздравляем 🎉", $"Ты купил: {product.Name}!");
-
-            // Обновляем UI
-            _shopProducts = await LoadProductAsync();
-            _currentUserProfile.Balance -= product.Price;
-            StateHasChanged();
+                // Обновляем UI
+                _shopProducts = await LoadProductAsync();
+                _currentUserProfile.Balance -= product.Price;
+                StateHasChanged();
+            }
+            else
+            {
+                await JsRuntime.InvokeVoidAsync("showFunnyPopup", "Ошибка 😵", "Не удалось обновить данные.");
+            }
         }
         catch (Exception ex)
         {
@@ -484,6 +428,8 @@
             await JsRuntime.InvokeVoidAsync("showFunnyPopup", "Ошибка 😵", "Покупка не удалась. Попробуй ещё раз.");
         }
     }
+    
+    
     // ==================== НАШИ ШМОТКИ И ДАННЫЕ ====================
     // Список всех шмоток в магазе
     private List<ShopProductView> _shopProducts = new();
@@ -543,23 +489,30 @@
     }
 
     // Помощник, который ходит в базу за данными
-    private async Task<List<T>> ExecuteQueryAsync<T>(string sql, Func<NpgsqlDataReader, T> mapFunction)
+    
+    
+// Универсальный метод для SELECT запросов с параметрами
+    private async Task<List<T>> ExecuteQueryAsync<T>(string sql, Func<NpgsqlDataReader, T> mapFunction, params (string Name, object Value)[]? parameters)
     {
-        // Список, куда складываем шмотки или профили
         var resultList = new List<T>();
-        // Строка подключения к базе
         var connString = Configuration.GetConnectionString("DefaultConnection");
 
         try
         {
-            // Соединяемся с базой
             await using var conn = new NpgsqlConnection(connString);
             await conn.OpenAsync();
-            // Кидаем запрос
             await using var cmd = new NpgsqlCommand(sql, conn);
-            // Читаем ответ
+        
+            // Добавляем параметры если они есть
+            if (parameters != null)
+            {
+                foreach (var (name, value) in parameters)
+                {
+                    cmd.Parameters.AddWithValue(name, value);
+                }
+            }
+        
             await using var reader = await cmd.ExecuteReaderAsync();
-            // Каждую строчку превращаем в штуку
             while (await reader.ReadAsync())
             {
                 resultList.Add(mapFunction(reader));
@@ -567,10 +520,37 @@
         }
         catch (Exception ex)
         {
-            // Если всё сломалось, пишем в консоль
             Console.WriteLine($"База отвалилась: {ex.Message}");
         }
         return resultList;
+    }
+  
+
+    // Добавляем метод для команд без возврата данных (INSERT, UPDATE, DELETE)
+    private async Task<int> ExecuteNonQueryAsync(string sql, params (string Name, object Value)[]? parameters)
+    {
+        var connString = Configuration.GetConnectionString("DefaultConnection");
+        try
+        {
+            await using var conn = new NpgsqlConnection(connString);
+            await conn.OpenAsync();
+            await using var cmd = new NpgsqlCommand(sql, conn);
+        
+            if (parameters != null)
+            {
+                foreach (var (name, value) in parameters)
+                {
+                    cmd.Parameters.AddWithValue(name, value);
+                }
+            }
+        
+            return await cmd.ExecuteNonQueryAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Ошибка выполнения команды: {ex.Message}");
+            return 0;
+        }
     }
 
     // Тащим шмотки из базы
@@ -632,7 +612,7 @@
     private string GetAvatarUrl(UserProfile profile)
     {
         // Если фотки нет, берём дефолтную
-        if (string.IsNullOrEmpty(profile.AvatarUrl))
+        if (string.IsNullOrWhiteSpace(profile.AvatarUrl))
         {
             return "/images/default-avatar.jpg";
         }
@@ -640,7 +620,7 @@
         // Делаем путь нормальным
         var avatarPath = profile.AvatarUrl.StartsWith("/") ? profile.AvatarUrl : "/" + profile.AvatarUrl;
         var fullPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", avatarPath.TrimStart('/'));
-        
+    
         // Если файл есть, показываем его, иначе дефолт
         return File.Exists(fullPath) ? avatarPath : "/images/default-avatar.jpg";
     }
