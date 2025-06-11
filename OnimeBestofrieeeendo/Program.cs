@@ -15,7 +15,7 @@ public class Program
         builder.Services.AddRazorComponents()
             .AddInteractiveServerComponents();
         builder.Services.AddScoped<ContactService>();
-        
+        builder.Services.AddScoped<UserProfileService>();
 
         var app = builder.Build();
 

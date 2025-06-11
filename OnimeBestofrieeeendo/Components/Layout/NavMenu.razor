@@ -1,10 +1,6 @@
-@using Microsoft.JSInterop
 @inject IJSRuntime JsRuntime
 @rendermode InteractiveServer
-@using OnimeBestofrieeeendo.Models
-@using System.Data
-@using Npgsql
-@inject NavigationManager NavigationManager
+@inject UserProfileService UserProfileService
 
 <!-- Отдельные навигационные кнопки -->
 <div class="nav-container">
@@ -89,66 +85,23 @@
     {
         try
         {
-            // Здесь загружаем профиль пользователя
-            var profiles = await LoadProfilesAsync();
+            // Загружаем профиль пользователя через сервис
+            var profiles = await UserProfileService.LoadProfilesAsync();
             if (profiles.Count > 0)
             {
-                // Для демонстрации берем первый профиль из списка
-                // В реальном приложении нужно использовать механизм аутентификации
                 _currentUser = profiles[0];
-                
-                // Устанавливаем аватар, если он есть
-                if (!string.IsNullOrEmpty(_currentUser.AvatarUrl))
-                {
-                    AvatarPath = _currentUser.AvatarUrl;
-                }
-                else
-                {
-                    // Если аватара нет, используем изображение по умолчанию
-                    AvatarPath = "/images/default-avatar.svg";
-                }
+                AvatarPath = UserProfileService.GetAvatarUrl(_currentUser);
+            }
+            else
+            {
+                AvatarPath = "/images/default-avatar.svg";
             }
         }
         catch (Exception ex)
         {
             Console.WriteLine($"Error loading user profile: {ex.Message}");
-            // В случае ошибки используем изображение по умолчанию
             AvatarPath = "/images/default-avatar.svg";
         }
-    }
-
-    private async Task<List<UserProfile>> LoadProfilesAsync()
-    {
-        var profiles = new List<UserProfile>();
-        
-        try
-        {
-            // Используем реальную строку подключения к базе данных Neon
-            var connectionString = "Host=ep-royal-sky-a237idgr-pooler.eu-central-1.aws.neon.tech;Username=neondb_owner;Password=npg_0lCxSkAVEUe9;Database=neondb;sslmode=require;";
-            using var connection = new NpgsqlConnection(connectionString);
-            await connection.OpenAsync();
-            
-            using var cmd = new NpgsqlCommand("SELECT * FROM users", connection);
-            using var reader = await cmd.ExecuteReaderAsync();
-            
-            while (await reader.ReadAsync())
-            {
-                var profile = new UserProfile
-                {
-                    Id = reader.GetInt32(reader.GetOrdinal("id")),
-                    Username = reader.GetString(reader.GetOrdinal("username")),
-                    AvatarUrl = reader.IsDBNull(reader.GetOrdinal("avatar_url")) ? null : reader.GetString(reader.GetOrdinal("avatar_url"))
-                };
-                
-                profiles.Add(profile);
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Database error: {ex.Message}");
-        }
-        
-        return profiles;
     }
 
     private async Task SetActive(string section)
@@ -161,18 +114,5 @@
         // Вызов события изменения секции
         await OnSectionChanged.InvokeAsync(section);
     }
-    
-    private bool IsHomePage()
-{
-    // Получаем текущий URL
-    var currentUrl = NavigationManager.Uri;
-    
-    // Извлекаем путь из URL
-    var uri = new Uri(currentUrl);
-    var path = uri.PathAndQuery;
-    
-    // Проверяем, является ли путь главной страницей
-    // Главная страница может быть "/", или "/home", или пустой путь
-    return path == "/" || path == "/home" || string.IsNullOrEmpty(path);
-}
+
 }
