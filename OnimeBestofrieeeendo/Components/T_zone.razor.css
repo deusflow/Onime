@@ -1,168 +1,19 @@
-﻿* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+﻿/* T-Zone specific styles - scoped to this component */
 
-html, body {
-    height: auto;
-    min-height: 100%;
+.tzone-container {
+    margin: 0 !important;
+    padding: 80px 0 0 0 !important;
+    box-sizing: border-box;
+    min-height: 100vh !important;
     overflow-x: hidden;
     overflow-y: auto;
-}
-
-.my-layout {
-    min-height: 100vh;
-    background: linear-gradient( 160deg, #fdfbfb 0%, #f1f3f6 30%, #e4ebf1 60%, #f8f9fb 85%, #fefefe 100% );
-    position: relative;
-    z-index: 0;
-}
-
-.kanji-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-.kanji-bg {
-    position: absolute;
-    font-family: 'Yu Mincho', 'Meiryo', 'Segoe UI', serif;
-    font-weight: bold;
-    white-space: nowrap;
-    opacity: 0.35;
-    user-select: none;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.08);
-    animation: fadeIn 2s ease-in-out both;
-}
-    .kanji-bg.k1 {
-        top: 5vh;
-        left: 8vw;
-        font-size: 7rem;
-        color: #d6727d;
-        transform: rotate(-12deg);
-    }
-
-    .kanji-bg.k2 {
-        top: 15vh;
-        right: 8vw;
-        font-size: 6.5rem;
-        color: #7b9acc;
-        transform: rotate(10deg);
-    }
-
-    .kanji-bg.k3 {
-        top: 30vh;
-        left: 6vw;
-        font-size: 5rem;
-        color: #a07cc4;
-        transform: rotate(-8deg);
-    }
-
-    .kanji-bg.k4 {
-        top: 35vh;
-        right: 10vw;
-        font-size: 5.5rem;
-        color: #70a89f;
-        transform: rotate(14deg);
-    }
-
-    .kanji-bg.k5 {
-        top: 50vh;
-        left: 20vw;
-        font-size: 4.5rem;
-        color: #e8909c;
-        transform: rotate(-18deg);
-    }
-
-    .kanji-bg.k6 {
-        top: 58vh;
-        right: 18vw;
-        font-size: 5rem;
-        color: #f7b85c;
-        transform: rotate(16deg);
-    }
-
-    .kanji-bg.k7 {
-        top: 68vh;
-        left: 12vw;
-        font-size: 5.2rem;
-        color: #c3a5e5;
-        transform: rotate(6deg);
-    }
-
-    .kanji-bg.k8 {
-        top: 75vh;
-        right: 10vw;
-        font-size: 6rem;
-        color: #f8a6a0;
-        transform: rotate(-14deg);
-    }
-
-    .kanji-bg.k9 {
-        top: 85vh;
-        left: 28vw;
-        font-size: 4.8rem;
-        color: #7cb9e8;
-        transform: rotate(12deg);
-    }
-
-
-
-body {
-    background: transparent;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    color: #222;
-}
-
-/* ...rest of your CSS remains unchanged... */
-#navbar {
-    display: flex;
-    background-color: lightpink;
-    top: 0;
-    left: 0;
-    flex-direction: row;
-    height: 60px;
-    position: fixed;
-    width: 100%;
-    justify-content: flex-start;
-    align-items: center;
-    z-index: 10;
-    border-bottom: 2px solid #e0b0b0;
-    padding: 0 32px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-
-    #navbar a {
-        font-size: 1rem;
-        font-weight: 500;
-        color: #333;
-        cursor: pointer;
-        transition: color 0.2s;
-        text-decoration: none;
-    }
-
-        #navbar a:hover {
-            color: #59CCCC;
-        }
-
-#nav-list {
-    list-style: none;
-    display: flex;
-    gap: 70px;
-    align-items: center;
-    width: 100%;
-    justify-content: flex-start;
+    width: 100% !important;
 }
 
 main {
-    display: flex;
-    flex-direction: column;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
 }
 
 .nav-option {
@@ -179,27 +30,27 @@ main {
 
 
 #welcome-msg {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 50px;
-    margin-top: 40px;
-    margin-bottom: 32px;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 50px !important;
+    margin-top: 40px !important;
+    margin-bottom: 32px !important;
 }
 
     #welcome-msg h3 {
-        font-size: 2.5rem;
-        font-weight: 600;
-        color: #333;
+        font-size: 2.5rem !important;
+        font-weight: 600 !important;
+        color: #333 !important;
     }
 
 #create-btn {
-    background: #59CCCC;
-    color: #1e1e1e;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 24px;
+    background: #59CCCC !important;
+    color: #1e1e1e !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 10px 24px !important;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;

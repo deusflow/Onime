@@ -1,6 +1,7 @@
 ﻿@rendermode InteractiveServer
 @inject DbService DbService
 @inject NavigationManager Navigation
+@inject IJSRuntime JS
 @page "/details"
 @layout MyLayout
 
@@ -35,6 +36,17 @@ else
     {
         item = await DbService.GetItemDetailsAsync(Id);
         user = await DbService.GetUserProfileAsync();
+    }    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // Force enable scroll for ItemDetails page
+            await JS.InvokeVoidAsync("eval", @"
+                document.body.style.overflow = 'auto';
+                document.documentElement.style.overflow = 'auto';
+                console.log('[ItemDetails] Scroll enabled on page load');
+            ");
+        }
     }
 
     private async Task BuyAsync(int id)

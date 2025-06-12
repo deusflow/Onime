@@ -8,7 +8,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f047eb9-94c7-4c61-8d46-eb3157542f4b" name="Changes" comment="" />
+    <list default="true" id="0f047eb9-94c7-4c61-8d46-eb3157542f4b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Components/Shared/MyLayout.razor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OnimeBestofrieeeendo.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnimeBestofrieeeendo.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Components/App.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Components/App.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Components/Pages/Create.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Components/Pages/Create.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Components/T_zone.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Components/T_zone.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OnimeBestofrieeeendo.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/OnimeBestofrieeeendo.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wwwroot/css/StylesCreate.css" beforeDir="false" afterPath="$PROJECT_DIR$/Components/Pages/Create.razor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wwwroot/css/StylesDetails.css" beforeDir="false" afterPath="$PROJECT_DIR$/Components/Pages/ItemDetails.razor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wwwroot/css/TzoneLayout.css" beforeDir="false" afterPath="$PROJECT_DIR$/Components/T_zone.razor.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,7 +92,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;test&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;#1 on test&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,

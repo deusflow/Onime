@@ -23,4 +23,11 @@
       <None Include="wwwroot\js\site.js" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Update="Components\T_zone.razor.css">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+    </ItemGroup>
+
 </Project>

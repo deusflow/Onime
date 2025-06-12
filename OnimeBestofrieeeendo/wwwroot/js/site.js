@@ -59,6 +59,28 @@ window.blazorLog = function(message) {
     console.log(message);
 };
 
+// Add function to reinitialize scroll behavior
+window.reinitializeScrollBehavior = function() {
+    console.log('[reinitializeScrollBehavior] Reinitializing scroll behavior for path:', window.location.pathname);
+    
+    // Remove existing event listeners to avoid duplicates
+    const currentPath = window.location.pathname;
+    const shouldBlock = currentPath === '/';
+    
+    if (shouldBlock) {
+        console.log('[reinitializeScrollBehavior] Blocking scroll on main page');
+    } else {
+        console.log('[reinitializeScrollBehavior] Allowing scroll on page:', currentPath);
+    }
+    
+    // Force enable scroll for trading zone pages
+    if (currentPath.startsWith('/test') || currentPath.startsWith('/create') || currentPath.startsWith('/details')) {
+        document.body.style.overflow = 'auto';
+        document.documentElement.style.overflow = 'auto';
+        console.log('[reinitializeScrollBehavior] Forced scroll enable for Trading Zone page');
+    }
+};
+
 
 // 7. Инициализация при загрузке страницы
 
@@ -89,23 +111,38 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     // dotNetHelper Blazor может передать отдельно, если надо
 
-    // Block scroll only on specific pages (sections)
+    // Block scroll only on main page (/)
     function shouldBlockScroll() {
-        const blockedPaths = ['/']; // add your section paths here
-        return blockedPaths.includes(window.location.pathname);
+        const currentPath = window.location.pathname;
+        const shouldBlock = currentPath === '/';
+        console.log('[shouldBlockScroll] Current path:', currentPath, 'Should block:', shouldBlock);
+        return shouldBlock;
     }
 
     document.addEventListener('wheel', function(e) {
-        if (shouldBlockScroll()) e.preventDefault();
+        if (shouldBlockScroll()) {
+            console.log('[wheel] Blocking scroll on main page:', window.location.pathname);
+            e.preventDefault();
+        } else {
+            console.log('[wheel] Allowing scroll on:', window.location.pathname);
+        }
     }, { passive: false });
 
     document.addEventListener('touchmove', function(e) {
-        if (shouldBlockScroll()) e.preventDefault();
+        if (shouldBlockScroll()) {
+            console.log('[touchmove] Blocking scroll on main page:', window.location.pathname);
+            e.preventDefault();
+        } else {
+            console.log('[touchmove] Allowing scroll on:', window.location.pathname);
+        }
     }, { passive: false });
 
     document.addEventListener('keydown', function(e) {
         if (shouldBlockScroll() && ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End'].includes(e.code)) {
+            console.log('[keydown] Blocking scroll on main page:', window.location.pathname);
             e.preventDefault();
+        } else if (!shouldBlockScroll()) {
+            console.log('[keydown] Allowing scroll on:', window.location.pathname);
         }
     }, { passive: false });
 });

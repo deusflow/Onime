@@ -1,8 +1,9 @@
 ﻿
-body {
+.create-page {
     background: #f7f7fa;
     font-family: 'Segoe UI', Arial, sans-serif;
     color: #222;
+    min-height: 100vh;
 }
 
 #CreateForm {

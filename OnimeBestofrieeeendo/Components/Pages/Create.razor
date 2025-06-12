@@ -1,12 +1,12 @@
 ﻿@page "/create"
 @inject NavigationManager Navigation
+@inject IJSRuntime JS
 @layout MyLayout
 @inject DbService DbService
 
-
- @*TODO: add form validation*@
-<h3 id="msg">Sell your item</h3>
-<EditForm model="Item" id="CreateForm" method="post" OnValidSubmit="() => HandleSubmitAsync()" FormName="create" Enhance>
+<div class="create-page">
+    <h3 id="msg">Sell your item</h3>
+    <EditForm model="Item" id="CreateForm" method="post" OnValidSubmit="() => HandleSubmitAsync()" FormName="create" Enhance>
     <DataAnnotationsValidator />
     <ValidationSummary role="alert" />
     <div id="NameDiv">
@@ -50,9 +50,9 @@
     <div id="URL">
         <label for="imgURL">Provide a URL with an image of your item:</label>
         <InputText id="imgURL" @bind-Value="Item.ImageUrl"></InputText>
-    </div>
-    <button type="submit">Create</button>
+    </div>    <button type="submit">Create</button>
 </EditForm>
+</div>
 
 @code {
     [SupplyParameterFromForm]
@@ -60,6 +60,19 @@
     private TradeItems Item { get; set; } = new() { ItemType = "t_shirt" };
     private string Card = "Card";
     private string t_shirt = "T-shirt";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // Force enable scroll for Create page
+            await JS.InvokeVoidAsync("eval", @"
+                document.body.style.overflow = 'auto';
+                document.documentElement.style.overflow = 'auto';
+                console.log('[Create] Scroll enabled on page load');
+            ");
+        }
+    }
 
     private async Task HandleSubmitAsync() {
         await DbService.CreateItem(Item);
