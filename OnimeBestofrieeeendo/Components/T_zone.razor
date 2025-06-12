@@ -1,0 +1,55 @@
+﻿@rendermode InteractiveServer
+@inject DbService DbService
+@inject NavigationManager Navigation
+@layout MyLayout
+@page "/test"
+
+<main>
+    <div id="welcome-msg">
+        <h3>Welcome to the <span id="welcome-msg-tzone">Trading Zone!!!</span></h3>
+        <button id="create-btn" @onclick="() => CreateItem()">Sell your own item</button>
+    </div>
+
+    <section id="prods-section">
+        @foreach (var prod in shopProducts)
+        {
+            <div class="prod-card">
+                <div class="img-containter">
+                    <img src="@prod.ImageUrl" alt="@prod.ItemName" />
+                </div>
+                <div class="prod-info">
+                    <h3 class="prod-title">@prod.ItemName</h3>
+                    <span class="prod-price">@prod.Price DKK</span>
+                    <span class="prod-price">@prod.Rarity</span>
+                    <div class="prod-actions">
+                        <button>Add to Cart</button>
+                        <button @onclick="() => GoToItem(prod.ShopItemId)">Read More</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </section>
+</main>
+
+@code {
+    List<TradeItems> shopProducts = new List<TradeItems>();
+
+    private async Task GetProducts()
+    {
+
+        shopProducts = await DbService.GetShopItemsAsync();
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetProducts();
+    }
+    void GoToItem(int id)
+    {
+        Navigation.NavigateTo($"/details?Id={id}");
+    }
+
+    private void CreateItem() {
+        Navigation.NavigateTo("/create");
+    }
+}

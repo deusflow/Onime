@@ -1,0 +1,55 @@
+﻿@rendermode InteractiveServer
+@inject DbService DbService
+@inject NavigationManager Navigation
+@page "/details"
+@layout MyLayout
+
+@if (item == null)
+{
+    <p>Loading or item not found...</p>
+}
+else
+{
+    <div class="item-details">
+        <img src="@item.ImageUrl" alt="@item.ItemName" @onload="StateHasChanged" />
+        <h2>@item.ItemName</h2>
+        <p><strong>Type:</strong> @item.ItemType</p>
+        <p><strong>Rarity:</strong> @item.Rarity</p>
+        <p><strong>Price:</strong> @item.Price DKK</p>
+        <p><strong>Quantity:</strong> @item.Quantity</p>
+        <p><strong>Description:</strong> @item.Description</p>
+        <button id="buy-btn" @onclick="() => BuyAsync(Id)">Buy</button>
+    </div>
+}
+
+
+@code {
+    [Parameter]
+    [SupplyParameterFromQuery]
+    public int Id { get; set; } = 0;
+
+    private TradeItems? item;
+    private UserProfile? user;
+
+    protected override async Task OnInitializedAsync()
+    {
+        item = await DbService.GetItemDetailsAsync(Id);
+        user = await DbService.GetUserProfileAsync();
+    }
+
+    private async Task BuyAsync(int id)
+    {
+        if (user.Balance >= item.Price)
+        {
+            await DbService.DeleteShopItemAsync(id);
+            await DbService.UpdateBalance(user, item.Price);
+            GoToShop();
+        }
+    }
+
+    private void GoToShop()
+    {
+        Navigation.NavigateTo("/test");
+    }
+}
+

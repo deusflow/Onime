@@ -1,0 +1,103 @@
+﻿html, body {
+    height: 100%;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: #f7f7fa;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #222;
+}
+
+.item-details {
+    min-height: calc(100vh - 60px);
+    width: 100vw;
+    padding: 32px 0 0 0;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+    .item-details img {
+        width: 100%;
+        max-width: 500px;
+        max-height: 400px; 
+        height: auto;
+        object-fit: contain;
+        border-radius: 12px;
+        background: #f3f3f3;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        display: block;
+        margin: 0 auto;
+    }
+
+
+
+
+    .item-details h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #333;
+        margin: 16px 0 8px 0;
+        text-align: center;
+    }
+
+    .item-details p {
+        font-size: 1.1rem;
+        color: #444;
+        margin: 4px 0;
+        width: 100%;
+        max-width: 420px;
+        text-align: left;
+    }
+
+        .item-details p strong {
+            color: #59CCCC;
+            font-weight: 600;
+        }
+
+#buy-btn {
+    background: #59CCCC;
+    color: #1e1e1e;
+    border: none;
+    border-radius: 8px;
+    padding: 16px 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    max-width: 420px;
+    margin: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: background 0.2s, color 0.2s;
+}
+
+    #buy-btn:hover {
+        background: #48bbbb;
+        color: #fff;
+    }
+
+@media (max-width: 600px) {
+    .item-details {
+        min-height: calc(100vh - 48px);
+        padding: 12px 0 0 0;
+    }
+
+        .item-details img {
+            max-width: 100%;
+            height: 160px;
+        }
+
+        .item-details h2 {
+            font-size: 1.1rem;
+        }
+
+        .item-details p, #buy-btn {
+            max-width: 98vw;
+        }
+}

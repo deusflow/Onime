@@ -1,0 +1,68 @@
+﻿@page "/create"
+@inject NavigationManager Navigation
+@layout MyLayout
+@inject DbService DbService
+
+
+ @*TODO: add form validation*@
+<h3 id="msg">Sell your item</h3>
+<EditForm model="Item" id="CreateForm" method="post" OnValidSubmit="() => HandleSubmitAsync()" FormName="create" Enhance>
+    <DataAnnotationsValidator />
+    <ValidationSummary role="alert" />
+    <div id="NameDiv">
+        <label for="ItemName">Enter name:</label>
+        <InputText id="ItemName" @bind-Value="Item.ItemName"></InputText>
+        <ValidationMessage For="() => Item.ItemName"></ValidationMessage>
+    </div>
+    <div id="DescriptionDiv">
+        <label for="Description">Enter description:</label>
+        <InputText id="Description" @bind-Value="Item.Description"></InputText>
+    </div>
+    <div id="PriceDiv">
+        <label for="Price">Price:</label>
+        <InputNumber @bind-Value="Item.Price" id="Price" min="0"></InputNumber>
+        <ValidationMessage For="() => Item.Price" />
+    </div>
+    <div id="TypeDiv">
+        <label for="type">Pick item type:</label>
+        <InputRadioGroup id="type" @bind-Value="Item.ItemType" TValue="string">
+            <label><InputRadio Value="t_shirt" TValue="string" /> T-Shirt</label><br />
+            <label><InputRadio Value="Card" TValue="string" /> Card</label><br />
+        </InputRadioGroup>
+        <ValidationMessage For="() => Item.ItemType" />
+    </div>
+    <div id="RarityDiv">
+        <label for="Rarity">Pick item rarity:</label>
+        <InputSelect id="Rarity" @bind-Value="Item.Rarity">
+            <option value="common">Common</option>
+            <option value="rare">Rare</option>
+            <option value="epic">Epic</option>
+            <option value="legendary">Legendary</option>
+        </InputSelect>
+        <ValidationMessage For="() => Item.Rarity" />
+    </div>
+    <div id="quanDiv">
+        <label for="quan">How many items do you want to sell?</label>
+        <InputNumber @bind-Value="Item.Quantity" id="quan" min="1">
+        </InputNumber>
+        <ValidationMessage For="() => Item.Quantity" />
+    </div>
+    <div id="URL">
+        <label for="imgURL">Provide a URL with an image of your item:</label>
+        <InputText id="imgURL" @bind-Value="Item.ImageUrl"></InputText>
+    </div>
+    <button type="submit">Create</button>
+</EditForm>
+
+@code {
+    [SupplyParameterFromForm]
+    // В файле Create.razor измените инициализацию Item, установив значение по умолчанию:
+    private TradeItems Item { get; set; } = new() { ItemType = "t_shirt" };
+    private string Card = "Card";
+    private string t_shirt = "T-shirt";
+
+    private async Task HandleSubmitAsync() {
+        await DbService.CreateItem(Item);
+        Navigation.NavigateTo("/test");
+    }
+}
