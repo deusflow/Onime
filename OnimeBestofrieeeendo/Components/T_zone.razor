@@ -5,8 +5,7 @@
 @layout MyLayout
 @page "/test"
 
-<style>
-    .tzone-container {
+<style>    .tzone-container {
         margin: 0 !important;
         padding: 80px 0 0 0 !important;
         box-sizing: border-box;
@@ -14,9 +13,10 @@
         overflow-x: hidden;
         overflow-y: auto;
         width: 100% !important;
-    }
-    
-    #welcome-msg {
+        z-index: 5 !important;
+        position: relative !important;
+        background: transparent !important;
+    }#welcome-msg {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
@@ -24,6 +24,10 @@
         gap: 50px !important;
         margin-top: 40px !important;
         margin-bottom: 32px !important;
+        z-index: 10 !important;
+        position: relative !important;
+        background: none !important;
+        padding: 0 !important;
     }
     
     #welcome-msg h3 {

@@ -8,6 +8,7 @@
     overflow-x: hidden;
     overflow-y: auto;
     width: 100% !important;
+    z-index: 1000;
 }
 
 main {
