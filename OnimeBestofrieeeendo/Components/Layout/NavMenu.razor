@@ -1,6 +1,7 @@
 @inject IJSRuntime JsRuntime
 @rendermode InteractiveServer
 @inject UserProfileService UserProfileService
+@inject NavigationManager Navigation
 
 <!-- Отдельные навигационные кнопки -->
 <div class="nav-container">
@@ -22,7 +23,7 @@
         }
     </button>
     
-    <button @onclick='() => SetActive("categories")' 
+    <button @onclick="GoToTest"
             class="nav-button-base nav-button-standard nav-button-zone @(CurrentSection == "categories" ? "active" : "")">
         T.Zone
         @if (CurrentSection == "categories")
@@ -33,7 +34,7 @@
     
     <button @onclick='() => SetActive("profile")' 
             class="nav-button-base nav-button-profile @(CurrentSection == "profile" ? "active" : "")">
-        <img src="@AvatarPath" alt="Profile" class="profile-avatar-img" />
+        <img src="/images/default-avatar.svg" alt="Profile" class="profile-avatar-img" />
         @if (CurrentSection == "profile")
         {
             <img src="/images/buttonisactive.gif" alt="Active" class="profile-active-indicator" />
@@ -112,6 +113,11 @@
         
         // Вызов события изменения секции
         await OnSectionChanged.InvokeAsync(section);
+    }
+    
+    void GoToTest()
+    {
+        Navigation.NavigateTo("/test");
     }
 
 }

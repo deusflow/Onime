@@ -10,7 +10,14 @@
   <component name="ChangeListManager">
     <list default="true" id="0f047eb9-94c7-4c61-8d46-eb3157542f4b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OnimeBestofrieeeendo.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OnimeBestofrieeeendo.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Components/App.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Components/App.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Components/Layout/MainLayout.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Components/Layout/MainLayout.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Components/Layout/NavMenu.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Components/Layout/NavMenu.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Components/Pages/Home.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Components/Pages/Home.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Components/_Imports.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Components/_Imports.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wwwroot/js/site.js" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/js/site.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../global.json" beforeDir="false" afterPath="$PROJECT_DIR$/../global.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,6 +153,8 @@
       <workItem from="1749314612835" duration="4015000" />
       <workItem from="1749488793784" duration="2227000" />
       <workItem from="1749491460641" duration="31848000" />
+      <workItem from="1749711821888" duration="8102000" />
+      <workItem from="1749722672712" duration="392000" />
     </task>
     <task id="LOCAL-00001" summary="New vers">
       <option name="closed" value="true" />

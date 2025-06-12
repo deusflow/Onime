@@ -89,17 +89,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     // dotNetHelper Blazor может передать отдельно, если надо
 
-    // Блокируем все виды скролла
+    // Block scroll only on specific pages (sections)
+    function shouldBlockScroll() {
+        const blockedPaths = ['/']; // add your section paths here
+        return blockedPaths.includes(window.location.pathname);
+    }
+
     document.addEventListener('wheel', function(e) {
-        e.preventDefault();
+        if (shouldBlockScroll()) e.preventDefault();
     }, { passive: false });
 
     document.addEventListener('touchmove', function(e) {
-        e.preventDefault();
+        if (shouldBlockScroll()) e.preventDefault();
     }, { passive: false });
 
     document.addEventListener('keydown', function(e) {
-        if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End'].includes(e.code)) {
+        if (shouldBlockScroll() && ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End'].includes(e.code)) {
             e.preventDefault();
         }
     }, { passive: false });

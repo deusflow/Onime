@@ -585,6 +585,8 @@
     // Решаем, какую фотку показать для профиля
     private string GetAvatarUrl(UserProfile profile)
     {
+        if (string.IsNullOrWhiteSpace(profile.AvatarUrl))
+            return "/images/default-avatar.jpg";
         return UserProfileService.GetAvatarUrl(profile);
     }
 

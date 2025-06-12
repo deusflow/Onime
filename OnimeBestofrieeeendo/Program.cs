@@ -16,6 +16,7 @@ public class Program
             .AddInteractiveServerComponents();
         builder.Services.AddScoped<ContactService>();
         builder.Services.AddScoped<UserProfileService>();
+        builder.Services.AddScoped<DbService>();
 
         var app = builder.Build();
 
