@@ -393,27 +393,24 @@
 
         try
         {
-            // ИСПОЛЬЗУЕМ НОВЫЕ УНИВЕРСАЛЬНЫЕ МЕТОДЫ:
-        
+            var connString = Configuration.GetConnectionString("DefaultConnection");
+            await using var conn = new NpgsqlConnection(connString);
+            await conn.OpenAsync();
+            
             // Обновляем баланс пользователя
-            var userUpdateResult = await ExecuteNonQueryAsync(
-                "UPDATE users SET balance = balance - @price WHERE id = @userId",
-                ("@price", product.Price),
-                ("@userId", _currentUserProfile.Id)
-            );
+            var userCmd = new NpgsqlCommand("UPDATE users SET balance = balance - @price WHERE id = @userId", conn);
+            userCmd.Parameters.AddWithValue("@price", product.Price);
+            userCmd.Parameters.AddWithValue("@userId", _currentUserProfile.Id);
+            var userUpdateResult = await userCmd.ExecuteNonQueryAsync();
 
             // Обновляем количество товара
-            var productUpdateResult = await ExecuteNonQueryAsync(
-                "UPDATE shop_items SET quantity = quantity - 1 WHERE shop_item_id = @shopItemId",
-                ("@shopItemId", product.ShopItemId)
-            );
+            var productCmd = new NpgsqlCommand("UPDATE shop_items SET quantity = quantity - 1 WHERE shop_item_id = @shopItemId", conn);
+            productCmd.Parameters.AddWithValue("@shopItemId", product.ShopItemId);
+            var productUpdateResult = await productCmd.ExecuteNonQueryAsync();
 
-            // Проверяем что обновления прошли успешно
             if (userUpdateResult > 0 && productUpdateResult > 0)
             {
                 await JsRuntime.InvokeVoidAsync("showFunnyPopup", "Поздравляем 🎉", $"Ты купил: {product.Name}!");
-
-                // Обновляем UI
                 _shopProducts = await LoadProductAsync();
                 _currentUserProfile.Balance -= product.Price;
                 StateHasChanged();
@@ -423,9 +420,8 @@
                 await JsRuntime.InvokeVoidAsync("showFunnyPopup", "Ошибка 😵", "Не удалось обновить данные.");
             }
         }
-        catch (Exception ex)
+        catch (Exception)
         {
-            Console.WriteLine("Ошибка при покупке: " + ex.Message);
             await JsRuntime.InvokeVoidAsync("showFunnyPopup", "Ошибка 😵", "Покупка не удалась. Попробуй ещё раз.");
         }
     }
@@ -483,103 +479,55 @@
                 Bio = $"Чё-то не грузится: {ex.Message}"
             };
         }
-        // Грузим шмотки
         _shopProducts = await LoadProductAsync();
     }
 
-    // Помощник, который ходит в базу за данными
-    
-    
-// Универсальный метод для SELECT запросов с параметрами
-    private async Task<List<T>> ExecuteQueryAsync<T>(string sql, Func<NpgsqlDataReader, T> mapFunction, params (string Name, object Value)[]? parameters)
+    // Загружаем товары из базы данных
+    private async Task<List<ShopProductView>> LoadProductAsync()
     {
-        var resultList = new List<T>();
+        var products = new List<ShopProductView>();
         var connString = Configuration.GetConnectionString("DefaultConnection");
-
+        
         try
         {
             await using var conn = new NpgsqlConnection(connString);
             await conn.OpenAsync();
-            await using var cmd = new NpgsqlCommand(sql, conn);
-        
-            // Добавляем параметры если они есть
-            if (parameters != null)
-            {
-                foreach (var (name, value) in parameters)
-                {
-                    cmd.Parameters.AddWithValue(name, value);
-                }
-            }
-        
+            
+            var cmd = new NpgsqlCommand(@"
+                SELECT shop_items.shop_item_id,
+                       shop_items.item_id,
+                       products.name,
+                       products.image_url,
+                       products.description,
+                       shop_items.price,
+                       shop_items.quantity, 
+                       shop_items.rarity
+                FROM shop_items
+                JOIN products ON shop_items.item_id = products.id
+                WHERE shop_items.available = true", conn);
+            
             await using var reader = await cmd.ExecuteReaderAsync();
             while (await reader.ReadAsync())
             {
-                resultList.Add(mapFunction(reader));
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"База отвалилась: {ex.Message}");
-        }
-        return resultList;
-    }
-  
-
-    // Добавляем метод для команд без возврата данных (INSERT, UPDATE, DELETE)
-    private async Task<int> ExecuteNonQueryAsync(string sql, params (string Name, object Value)[]? parameters)
-    {
-        var connString = Configuration.GetConnectionString("DefaultConnection");
-        try
-        {
-            await using var conn = new NpgsqlConnection(connString);
-            await conn.OpenAsync();
-            await using var cmd = new NpgsqlCommand(sql, conn);
-        
-            if (parameters != null)
-            {
-                foreach (var (name, value) in parameters)
+                products.Add(new ShopProductView
                 {
-                    cmd.Parameters.AddWithValue(name, value);
-                }
+                    ShopItemId = reader.GetInt32(0),
+                    ItemId = reader.GetInt32(1),
+                    Name = reader.GetString(2),
+                    ImageUrl = reader.GetString(3),
+                    Description = reader.GetString(4),
+                    Price = reader.GetDecimal(5),
+                    Quantity = reader.GetInt32(6),
+                    Rarity = reader.GetString(7)
+                });
             }
+        }
+        catch (Exception)
+        {
+            // Возвращаем пустой список если что-то пошло не так
+        }
         
-            return await cmd.ExecuteNonQueryAsync();
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Ошибка выполне��ия команды: {ex.Message}");
-            return 0;
-        }
-    }
-
-    // Тащим шмотки из базы
-    private async Task<List<ShopProductView>> LoadProductAsync()
-    {
-        // Запрос, чтоб достать все шмотки, которые можно купить
-        string sql = @"
-            SELECT shop_items.shop_item_id,
-                   shop_items.item_id,
-                   products.name,
-                   products.image_url,
-                   products.description,
-                   shop_items.price,
-                   shop_items.quantity, shop_items.rarity
-            FROM shop_items
-            JOIN products ON shop_items.item_id = products.id
-            WHERE shop_items.available = true";
-
-        // Используем помощника, чтоб превратить данные в шмотки
-        return await ExecuteQueryAsync(sql, reader => new ShopProductView
-        {
-            ShopItemId = reader.GetInt32(0),
-            ItemId = reader.GetInt32(1),
-            Name = reader.GetString(2),
-            ImageUrl = reader.GetString(3),
-            Description = reader.GetString(4),
-            Price = reader.GetDecimal(5),
-            Quantity = reader.GetInt32(6),
-            Rarity = reader.GetString(7)
-        });
+        return products;
     }
 
     // Решаем, какую фотку показать для профиля
